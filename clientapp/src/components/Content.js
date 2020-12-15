@@ -4,10 +4,10 @@ const Content = ({ styles }) => {
   const dummyPost = {
     title: `Bienvenido a La Noria`,
     summary:
-      "Ordenar"
+      "Av Puebla 5250, Puebla de Zaragoza, Mexico"
   };
 
-  const posts = Array(1).fill(dummyPost);
+  const posts = Array(3).fill(dummyPost);
 
   const contentStyle = {
     paddingTop: styles.topBarHeight + 20,
