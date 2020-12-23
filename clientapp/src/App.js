@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TopBar from "./components/TopBar";
+import TopBar from "./components/Topbar.js";
 import FooterMenu from "./components/FooterMenu";
 import Content from "./components/Content";
 
