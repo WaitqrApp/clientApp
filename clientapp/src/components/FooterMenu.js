@@ -1,6 +1,6 @@
 import React from "react";
 
-const FooterMenu = ({ menuItems, styles }) => {
+const FooterMenu = ({styles }) => {
   return (
     <div
       style={{
@@ -14,21 +14,6 @@ const FooterMenu = ({ menuItems, styles }) => {
         bottom: 0
       }}
     >
-      {menuItems.map((item, i) => {
-        return (
-          <div
-            key={i}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flex: 1
-            }}
-          >
-            <span style={{ fontSize: 20 }}>{item.icon}</span>
-          </div>
-        );
-      })}
     </div>
   );
 };

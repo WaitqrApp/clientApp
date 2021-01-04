@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import TopBar from "./components/Topbar.js";
-import FooterMenu from "./components/FooterMenu";
 import Content from "./components/Content";
+import css from "./App.css";
+import searchbar from './searchbar.png';
+
 
 class App extends Component {
   constructor(props) {
@@ -17,25 +19,20 @@ class App extends Component {
       footerMenuHeight: 50
     };
 
-    const menuItems = [
-      { icon: `😀`, text: "Item 1" },
-      { icon: `😉`, text: "Item 2" },
-      { icon: `😎`, text: "Item 3" },
-      { icon: `🤔`, text: "Item 4" },
-      { icon: `😛`, text: "Item 5" }
-    ];
-
     return (
-      <div
-        style={{
-          backgroundColor: styles.black(0.05),
-          minHeight: "100vh",
-          position: "relative"
-        }}
-      >
-        <TopBar styles={styles} />
+      <div className="contenido">
+        <h1>La Noria</h1>
+        <p>Mesa 5</p>
+        <div className="searchbar-div"><input className="searchbar" type="search" placeholder="Buscar en el Menú" aria-label="Search" 
+              /*startAdornment={
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>}/*/></input></div>
+            
+        
+        <h1>Menú del día</h1>
         <Content styles={styles} />
-        <FooterMenu menuItems={menuItems} styles={styles} />
+        <h1>Entradas</h1>
       </div>
     );
   }

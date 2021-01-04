@@ -1,3 +1,35 @@
+.contenido {
+  background-color: white;
+  min-height: 100vh;
+  position: relative;
+        }
+
+.contenido h1 {
+  font: roboto;
+  color: #002E48;
+  font-size: large;
+  margin-left: 5%;
+  margin-top: 8%;
+  font-weight: bold;
+        }
+
+.contenido p {
+  color: #A3A3A4;
+  margin-left: 5%;
+  font-weight: bold;
+}
+
+.searchbar {
+  width: 70%;
+  margin-top: 5%;
+  height: 1000%;
+  font-size: large;
+}
+
+.searchbar-div {
+  text-align: center;
+}
+
 .App {
   text-align: center;
 }

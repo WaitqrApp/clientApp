@@ -2,15 +2,15 @@ import React from "react";
 import MenuCliente from "./Menu/MenuCliente";
 const Content = ({ styles }) => {
   const dummyPost = {
-    title: `Bienvenido a La Noria`,
+    title: `CREO QUE HAY QUE QUITAR ESTE DESMADRE`,
     summary:
-      "Av Puebla 5250, Puebla de Zaragoza, Mexico"
+      "ESTE TAMBIEN"
   };
 
-  const posts = Array(3).fill(dummyPost);
+  const posts = Array(1).fill();
 
   const contentStyle = {
-    paddingTop: styles.topBarHeight + 20,
+    paddingTop: 0,
     paddingRight: 20,
     paddingBottom: styles.footerMenuHeight + 20,
     paddingLeft: 20
@@ -22,8 +22,6 @@ const Content = ({ styles }) => {
         return (
             <>
           <div key={i} style={{ marginBottom: 40 }}>
-            <h2 style={{ marginBottom: 0 }}>{post.title}</h2>
-            <p>{post.summary}</p>
           </div>
           <MenuCliente></MenuCliente>
           </>
