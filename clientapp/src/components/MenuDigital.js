@@ -12,7 +12,6 @@ function MenuDigital() {
     let history = useHistory();
   return (
     <div className="menu-principal">
-      <Button variant = "light" onClick={() => history.goBack()}>Back</Button>
       <h1>La Noria</h1>
       <p>Mesa 1</p>
       <span className="oi oi-basket"></span>

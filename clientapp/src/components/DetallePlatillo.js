@@ -13,13 +13,13 @@ function DetallePlatillo() {
         <Container>
       <Button variant = "light" onClick={() => history.goBack()}>Back</Button>
 
-            <Card className="platillo ml-n3 p-0"> 
-                <Row >
+            <Card className="platillo"> 
+                <Row>
                     <Col sm={12} >
                         <Card.Img className="imagen-detalle" variant="top" src={Picaña} />
                     </Col>
                 </Row>
-                <Row>
+                <Row className = "mr-0">
                     <Card.Body>
                         <Card.Title className="font-weight-bold">
                             <Row>
@@ -29,7 +29,7 @@ function DetallePlatillo() {
                             </Row>
                         </Card.Title>
                         <Card.Text className="mt-3">
-                            Deliciosa Picaña Haye acompañada de tacos de tuetano y queso brie
+                            Deliciosa Picaña Haye acompañada de tacos de tuetano y queso badón (Brie)
                         <br></br>
                             <span><span>$</span>365.00</span>
                         </Card.Text>
