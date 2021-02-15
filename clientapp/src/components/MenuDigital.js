@@ -1,12 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
-import { Form, Card, Col, Row, Accordion, Badge } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
+import { Form, Card, Col, Row, Accordion, Badge, Button } from 'react-bootstrap';
 import Picaña from './Menu/picana-t.jpg';
 import { useState } from "react";
 function MenuDigital() {
     const [modalShow, setModalShow] = useState(false);
+    let history = useHistory();
   return (
     <div className="contenido">
+      <Button onClick={() => history.goBack()}>Back</Button>
       <h1>La Noria</h1>
       <p>Mesa 1</p>
       <Form.Control size="sm" type="text" placeholder="Busca un platillo" />

@@ -1,9 +1,12 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import { Row, Col, Dropdown, DropdownButton, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 
 function Welcome() {
+    
     return (
         <>
+        
             <Col>
                 <Row>
                     <div>
@@ -37,7 +40,10 @@ function Welcome() {
                 <br></br>
 
                 <Row>
+                <Link to={'/MenuDigital'}>
                 <Button variant="primary">CONFIRMAR</Button>
+
+                </Link>
                 </Row>
             </Col>
         </>
