@@ -1,11 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Form, Card, Col, Row, Accordion, Badge, Button } from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
-import { Form, Card, Col, Row, Accordion, Badge, Container } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route,Link } from "react-router-dom";
+import { Form, Card, Col, Row, Accordion, Badge, Container, Button } from 'react-bootstrap';
 import Picaña from './Menu/picana-t.jpg';
 import Papas from './papas-gajo.jpg';
-import { useState } from "react";
+
 import css from './Menu/menucliente.css'
 
 
@@ -13,12 +12,13 @@ function MenuDigital() {
     let history = useHistory();
   return (
     <div className="menu-principal">
-      <Button onClick={() => history.goBack()}>Back</Button>
+      <Button variant = "light" onClick={() => history.goBack()}>Back</Button>
       <h1>La Noria</h1>
       <p>Mesa 1</p>
       <span className="oi oi-basket"></span>
       <Form.Control className="searchbar" size="sm" type="text" placeholder="Busca un platillo" />
       <h2>Lo más recomendado</h2>
+      <Link to={'/DetallePlatillo'}>
       <Card className="mb-4" style={{ flex: 1 }}>
         <Card.Img variant="top" src={Picaña} />
         <Card.Body>
@@ -40,7 +40,10 @@ function MenuDigital() {
             <span><span>$</span>365.00</span>
           </Card.Text>
         </Card.Body>
+
       </Card>
+      </Link>
+
       <Accordion defaultActiveKey="0">
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="0">

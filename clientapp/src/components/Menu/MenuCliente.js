@@ -10,7 +10,7 @@ function MenuCliente() {
     let history = useHistory();
     return (
         <>
-      <Button onClick={() => history.goBack()}>Back</Button>
+      <Button variant = "light" onClick={() => history.goBack()}>Back</Button>
         <Card style={{ width: '18rem' }}>
             <Card.Img className="platillo" variant="top" src= {npplatillo} rounded width={171}
     height={180} />

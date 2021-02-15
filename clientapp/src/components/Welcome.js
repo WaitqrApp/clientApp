@@ -1,5 +1,4 @@
 import React, { Fragment, useContext, useEffect } from 'react';
-import { Row, Col, Dropdown, DropdownButton, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import { Row, Col, Dropdown, DropdownButton, Button, Card, Container } from 'react-bootstrap';
 import css from "./styles.css"
@@ -36,11 +35,8 @@ function Welcome() {
 
                 <Row>
                     <Link to={'/MenuDigital'}>
-                        <Button variant="primary">CONFIRMAR</Button>
-                    </Link>
-                    <Row className="align-bottom">
                         <Button className="confirmar" variant="primary">CONFIRMAR</Button>
-                    </Row>
+                    </Link>
                 </Row>
             </Col>
                 <Card.Img className="logo" variant="top" src={Logo} />

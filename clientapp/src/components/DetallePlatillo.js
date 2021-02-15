@@ -2,12 +2,17 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import { Card, Col, Row, Badge, Button, Form, Container } from 'react-bootstrap';
 import Picaña from './Menu/picana-t.jpg';
+import { useHistory } from "react-router-dom";
+
 import './styles.css'
 function DetallePlatillo() {
 
+    let history = useHistory();
 
     return (
         <Container>
+      <Button variant = "light" onClick={() => history.goBack()}>Back</Button>
+
             <Card className="platillo ml-n3 p-0"> 
                 <Row >
                     <Col sm={12} >
