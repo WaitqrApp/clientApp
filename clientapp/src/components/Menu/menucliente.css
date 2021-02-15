@@ -1,7 +1,48 @@
-.platillo {
-    width: 120%;
-    height: 120%;
-    margin-top: -5%;
-    display: block;
-    margin-left: 3%;
+
+
+.menu-principal h1 {
+        font-size: 150%;
+        font-weight: bold;
+        color: rgb(7, 46, 72);
+        margin-left: 5%;
+        margin-top: 3%;
+}
+
+.menu-principal h2 {
+    font-size: 120%;
+    font-weight: bold;
+    color: #EFB63D;
+    margin-left: 5%;
+}
+
+.menu-principal h3 {
+    font-size: 100%;
+    font-weight: bold;
+    color: rgb(7, 46, 72);
+}
+
+.menu-principal p {
+    font-size: 75%;
+    color: rgba(7, 46, 72, 0.685);
+    margin-left: 5%;
+
+}
+
+.searchbar {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+}
+
+.badge {
+    background-color: #EFB63D;
+}
+
+.contenedor-platillo {
+    margin-left: -5%;
+}
+
+.imagen-platillo {
+    border-radius: 30%;
 }
