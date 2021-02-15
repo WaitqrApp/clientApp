@@ -1,0 +1,86 @@
+.bienvenido h1 {
+    font-size: 150%;
+    font-weight: bold;
+    color: #EFB63D;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+.bienvenido h2 {
+    font-size: 200%;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(7, 46, 72);
+    margin-top: 40%;
+}
+
+.bienvenido h3 {
+    font-size: 100%;
+    font-weight: bold;
+    color: rgb(7, 46, 72);
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+.confirmar {
+    width: 90vw;
+    height: 6vh;
+    margin-left:auto;
+    margin-right: auto;
+    background-color: #EFB63D;
+    border-color: #EFB63D;
+}
+
+.confirmar:focus {
+    background-color: #EFB63D;
+    border-color: #EFB63D;
+  }
+
+.mesa {
+    margin-left:auto;
+    margin-right: auto;
+  }
+
+.platillo h1 {
+    font-size: 100%;
+    font-weight: bold;
+    color: rgb(7, 46, 72);
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.imagen-detalle {
+    width: 100%;
+    height: auto;
+    border-radius: 5%;
+}
+
+.platillo {
+    width: 100vw;
+    height: 100%;
+    margin-top: 0%;
+    padding-left: 0px !important;  
+    padding-right: 0px !important; 
+}
+
+.input-cantidad {
+    margin-left: 5%;
+}
+
+.input-notas {
+    width: auto;
+    margin-left: 3%;
+    margin-right: auto;
+}
+.input-notas-texto {
+width: 90vw;
+height: 10vh;
+margin-left: auto;
+margin-right: auto;
+}
