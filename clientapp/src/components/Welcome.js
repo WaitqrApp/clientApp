@@ -1,7 +1,6 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
 import { Row, Col, Dropdown, DropdownButton, Button, Card, Container } from 'react-bootstrap';
-import css from "./styles.css"
 import Logo from './logo_waitqr.png';
 
 function Welcome() {
