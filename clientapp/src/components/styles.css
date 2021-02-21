@@ -1,3 +1,8 @@
+/* Pagina de Bienvenido*/
+.bienvenido {
+    height: 100vh;
+}
+
 .bienvenido h1 {
     font-size: 150%;
     font-weight: bold;
@@ -42,17 +47,28 @@
     margin-right: auto;
   }
 
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+/* Pagina de Detalle Platillo*/
 .platillo h1 {
     font-size: 100%;
     font-weight: bold;
     color: rgb(7, 46, 72);
 }
 
-.logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+.platillo h2 {
+    font-size: 100%;
+    color:  rgb(7, 46, 72);
+}
+
+.platillo h3 {
+    font-size: 110%;
+    color: #EFB63D;
 }
 
 .imagen-detalle {
@@ -87,4 +103,99 @@ width: 90vw;
 height: 10vh;
 margin-left: auto;
 margin-right: auto;
+}
+
+/* Pagina de Orden*/
+
+.orden h1 {
+    font-size: 100%;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(7, 46, 72);
+}
+
+.orden h2 {
+    font-size: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(7, 46, 72);
+}
+
+.platillo-orden {
+    flex-direction: row;
+}
+
+.boton-ordenar {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    bottom:0;
+    margin-bottom: 10%;
+}
+
+.notas-titulo {
+    position: absolute;
+    bottom:0;
+    margin-bottom: 40%;
+}
+
+.notas-texto {
+    position: absolute;
+    bottom:0;
+    margin-bottom: 35%;
+}
+
+.total {
+    flex-direction: row;
+    position: absolute;
+    bottom:0;
+    margin-bottom: 55%;
+}
+.total-texto {
+    right: 0;
+}
+
+/* Pantalla de Estatus */
+
+.logo-estatus {
+    position: absolute;
+    bottom:0;
+    margin-bottom: 15%;
+}
+
+.logo-texto {
+    position: absolute;
+    bottom:0;
+    margin-bottom: 43%;
+}
+
+.estatus h1 {
+    font-size: 150%;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(7, 46, 72);
+    margin-top: 25%;
+    text-align: center;
+}
+
+.estatus h2 {
+    font-size: 100%;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(7, 46, 72);
+    margin-top: 10%;
+    text-align: center;
+}
+
+.estatus h3 {
+    font-size: 100%;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(7, 46, 72);
+    margin-top: 10%;
+    text-align: center;
 }

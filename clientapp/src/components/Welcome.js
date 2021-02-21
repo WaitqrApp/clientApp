@@ -1,14 +1,14 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { Row, Col, Dropdown, DropdownButton, Button, Card, Container } from 'react-bootstrap';
-import css from "./styles.css"
+import "./styles.css"
 import Logo from './logo_waitqr.png';
 
 function Welcome() {
 
     return (
-        <Container>
-            <Col className="bienvenido">
+        <Container fluid className="bienvenido">
+            <Col>
                 <Row>
                     <div>
                         <h3>Bienvenido a </h3>

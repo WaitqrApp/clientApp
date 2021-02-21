@@ -3,23 +3,23 @@ import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import { Card, Col, Row, Badge, Button, Form, Container } from 'react-bootstrap';
 import Picaña from './Menu/picana-t.jpg';
 import { useHistory } from "react-router-dom";
-
 import './styles.css'
+
 function DetallePlatillo() {
 
     let history = useHistory();
 
     return (
-        <Container>
-      <Button variant = "light" onClick={() => history.goBack()}>Back</Button>
+        <Container fluid>
+            <Button variant="light" onClick={() => history.goBack()}>Back</Button>
 
-            <Card className="platillo"> 
+            <Card className="platillo">
                 <Row>
                     <Col sm={12} >
                         <Card.Img className="imagen-detalle" variant="top" src={Picaña} />
                     </Col>
                 </Row>
-                <Row className = "mr-0">
+                <Row className="mr-0">
                     <Card.Body>
                         <Card.Title className="font-weight-bold">
                             <Row>
@@ -29,9 +29,10 @@ function DetallePlatillo() {
                             </Row>
                         </Card.Title>
                         <Card.Text className="mt-3">
-                            Deliciosa Picaña Haye acompañada de tacos de tuetano y queso badón (Brie)
-                        <br></br>
-                            <span><span>$</span>365.00</span>
+                            <h2>Deliciosa Picaña Haye acompañada de tacos de tuetano y queso badón (Brie)</h2>
+                        </Card.Text>
+                        <Card.Text className="mt-2">
+                            <h3>$365.00</h3>
                         </Card.Text>
                     </Card.Body>
                 </Row>
