@@ -1,31 +1,47 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { BrowserRouter as Link } from "react-router-dom";
-import { Form, Card, Col, Row, Accordion, Badge, Container, InputGroup} from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route,Link } from "react-router-dom";
+import { Form, Card, Col, Row, Accordion, Badge, Container, Button } from 'react-bootstrap';
 import Picaña from './Menu/picana-t.jpg';
 import Papas from './papas-gajo.jpg';
-import SearchIcon from '@material-ui/icons/Search'; 
-import DishCard from './Cards/DishCard';
+
+import css from './Menu/menucliente.css'
+
+
 function MenuDigital() {
+    let history = useHistory();
   return (
     <div className="menu-principal">
       <h1>La Noria</h1>
       <p>Mesa 1</p>
-      <Col xs={12} md={12}>
-      <InputGroup>
-        <InputGroup.Prepend>
-          <InputGroup.Text>
-            <SearchIcon/> 
-          </InputGroup.Text>
-        </InputGroup.Prepend>
-        <Form.Control className="searchbar"  type="text" placeholder=" Busca un platillo" />
-      </InputGroup>
-      </Col>
-        <h2>Lo más recomendado</h2>
-        <Link to={'/DetallePlatillo'}>
-          <DishCard/>
-        </Link>
+      <span className="oi oi-basket"></span>
+      <Form.Control className="searchbar" size="sm" type="text" placeholder="Busca un platillo" />
+      <h2>Lo más recomendado</h2>
+      <Link to={'/DetallePlatillo'}>
+      <Card className="mb-4" style={{ flex: 1 }}>
+        <Card.Img variant="top" src={Picaña} />
+        <Card.Body>
+          <Card.Title className="font-weight-bold">
+            <Row>
+              <Col>
+                Picaña Haye
+              </Col>
+              <Col>
+                <Col>
+                  <Badge className="badge" variant="primary"> El más pedido</Badge>
+                </Col>
+              </Col>
+            </Row>
+          </Card.Title>
+          <Card.Text>
+            Deliciosa Picaña Haye
+                        <br></br>
+            <span><span>$</span>365.00</span>
+          </Card.Text>
+        </Card.Body>
 
+      </Card>
+      </Link>
 
       <Accordion defaultActiveKey="0">
         <Card>
