@@ -1,19 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
-import { Card, Col, Row, Badge, Button, Form, Container } from 'react-bootstrap';
+import { Card, Col, Row, Button, Form, Container } from 'react-bootstrap';
 import Picaña from './Menu/picana-t.jpg';
-import { useHistory } from "react-router-dom";
+import BackButton from './Buttons/BackButton';
+
 import './styles.css'
 
 function DetallePlatillo() {
 
-    let history = useHistory();
 
     return (
-        <Container fluid>
-            <Button variant="light" onClick={() => history.goBack()}>Back</Button>
-
-            <Card className="platillo">
+        <Container>
+            <BackButton/>
+            <Card className="platillo"> 
                 <Row>
                     <Col sm={12} >
                         <Card.Img className="imagen-detalle" variant="top" src={Picaña} />
