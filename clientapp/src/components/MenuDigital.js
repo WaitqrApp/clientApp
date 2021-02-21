@@ -5,7 +5,7 @@ import { Form, Card, Col, Row, Accordion, Badge, Container, Button } from 'react
 import Picaña from './Menu/picana-t.jpg';
 import Papas from './papas-gajo.jpg';
 
-import css from './Menu/menucliente.css'
+import './Menu/menucliente.css'
 
 
 function MenuDigital() {
