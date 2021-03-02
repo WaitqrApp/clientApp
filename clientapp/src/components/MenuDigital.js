@@ -15,11 +15,11 @@ function MenuDigital() {
     <div className="menu-principal">
       <h1>La Noria</h1>
       <p>Mesa 1</p>
-      <InputGroup>
+      <InputGroup className="searchbar">
         <InputGroup.Prepend>
           <InputGroup.Text id="basic-addon1"><SearchIcon /></InputGroup.Text>
         </InputGroup.Prepend>
-        <Form.Control className="searchbar" type="text" placeholder="Busca un platillo" />
+        <Form.Control type="text" placeholder="Busca un platillo" />
       </InputGroup>
       <h2>Lo más recomendado</h2>
       <Link to={'/DetallePlatillo'}>

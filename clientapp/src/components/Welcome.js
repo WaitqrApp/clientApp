@@ -35,7 +35,7 @@ function Welcome() {
 
                 <Row>
                     <Link to={'/MenuDigital'}>
-                        <Button className="confirmar" variant="primary">CONFIRMAR</Button>
+                        <div className="btn confirmar">CONFIRMAR</div>
                     </Link>
                 </Row>
             </Col>

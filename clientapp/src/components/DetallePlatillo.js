@@ -70,7 +70,7 @@ function DetallePlatillo() {
                 </Form>
             </Row>
             <Row>
-                <Button className="confirmar mt-3" variant="primary">Agregar</Button>
+                <Button className="confirmar mt-3">Agregar</Button>
             </Row>
 
         </Container>
