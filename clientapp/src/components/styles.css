@@ -42,6 +42,11 @@
     border-color: #EFB63D;
   }
 
+.confirmar:not(:disabled):not(.disabled):active {
+    background-color:  #efb73d8e;
+    border-color: #efb73d8e;
+  }
+
 .mesa {
     margin-left:auto;
     margin-right: auto;

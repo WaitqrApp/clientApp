@@ -39,7 +39,7 @@ function Estatus() {
             <Row>
                 <Col className="boton-ordenar" sm={12}>
                     <Link to={'/'}>
-                        <Button className="confirmar" variant="primary">ORDENAR ALGO MÁS</Button>
+                        <Button className="confirmar">ORDENAR ALGO MÁS</Button>
                     </Link>
                 </Col>
             </Row>
