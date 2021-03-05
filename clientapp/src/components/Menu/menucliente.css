@@ -28,6 +28,12 @@
 
 }
 
+.menu-principal p1 {
+    font-size: 95%;
+    color: rgba(7, 46, 72, 0.685);
+    margin-left: 0%;
+}
+
 .searchbar {
     width: 90%;
     margin-left: auto;

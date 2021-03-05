@@ -60,7 +60,7 @@ function Orden() {
             <Row>
                 <Col className="boton-ordenar" sm={12}>
                     <Link to={'/estatus'}>
-                        <Button className="confirmar" variant="primary">CONFIRMAR</Button>
+                        <Button className="confirmar" variant="primary">Confirmar</Button>
                     </Link>
                 </Col>
             </Row>

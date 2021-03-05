@@ -9,7 +9,7 @@ function DetallePlatillo() {
 
 
     return (
-        <Container>
+        <div className="detalle-platillo">
             <BackButton/>
             <Card className="platillo"> 
                 <Row>
@@ -37,7 +37,7 @@ function DetallePlatillo() {
             </Card>
             <Row>
                 <Form>
-                    <Row className="input-cantidad ml-2 mt-3">
+                    <Row className="input-cantidad ml-4 mt-3">
                         <Form.Group>
                             <Col sm={3}>
                                 <Form.Label>Cantidad</Form.Label>
@@ -53,7 +53,7 @@ function DetallePlatillo() {
                             </Col>
                         </Form.Group>
                     </Row>
-                    <Row className="input-notas ml-2 mt-3">
+                    <Row className="input-notas ml-4 mt-3">
                         <Form.Group className="input-notas">
                             <Row>
                                 <Col sm={12}>
@@ -73,7 +73,7 @@ function DetallePlatillo() {
                 <Button className="confirmar mt-3">Agregar</Button>
             </Row>
 
-        </Container>
+        </div>
     );
 }
 

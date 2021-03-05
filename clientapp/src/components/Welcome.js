@@ -8,38 +8,47 @@ function Welcome() {
 
     return (
         <Container fluid className="bienvenido">
-            <Col>
-                <Row>
-                    <div>
-                        <h3>Bienvenido a </h3>
-                        <h1>Restaurante La Noria</h1>
-                    </div>
-                </Row>
-                <Row className="align-middle">
-                    <h2>Confirma tu mesa</h2>
-                </Row>
-                <Row>
-                    <DropdownButton className="mesa" title="mesa 1" variant="light">
+            <Row>
+                <Col>
+                    <h3>Bienvenido a</h3>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <h1>Restaurante La Noria</h1>
+                </Col>
+            </Row>
+            <Row className="align-middle">
+                <h2>Confirma tu mesa</h2>
+            </Row>
+            <Row>
+                <Col className="mesa">
+                    <DropdownButton className="mesa ml-auto mr-auto" title="mesa 1" variant="light">
                         <Dropdown.Item eventKey="1">2</Dropdown.Item>
                         <Dropdown.Item eventKey="2">3</Dropdown.Item>
                         <Dropdown.Item eventKey="3">4</Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item eventKey="4">?</Dropdown.Item>
                     </DropdownButton>
-                </Row>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-
-                <Row>
+                </Col>
+            </Row>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <Row>
+                <Col className="boton-orden">
                     <Link to={'/MenuDigital'}>
-                        <div className="btn confirmar">CONFIRMAR</div>
+                        <Button className="confirmar mt-3">Confirmar</Button>
                     </Link>
-                </Row>
-            </Col>
-                <Card.Img className="logo" variant="top" src={Logo} />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Card.Img className="logo" variant="top" src={Logo} />
+                </Col>
+            </Row>
         </Container>
 
     );

@@ -14,11 +14,6 @@ function Estatus() {
     return (
         <Container className="estatus" fluid>
             <Row>
-                <Col>
-                    <Button variant="light" onClick={() => history.goBack()}>Back</Button>
-                </Col>
-            </Row>
-            <Row>
                 <Col className="estatus-titulo  ml-auto mr-auto">
                     <h1>Tu órden ha sido recibida</h1>
                 </Col>
@@ -39,7 +34,7 @@ function Estatus() {
             <Row>
                 <Col className="boton-ordenar" sm={12}>
                     <Link to={'/MenuDigital'}>
-                        <Button className="confirmar" variant="primary">ORDENAR ALGO MÁS</Button>
+                        <Button className="confirmar" variant="primary">Ordenar Algo Más</Button>
                     </Link>
                 </Col>
             </Row>

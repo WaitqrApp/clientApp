@@ -26,28 +26,26 @@ function MenuDigital() {
         <Card className="mb-4" style={{ flex: 1 }}>
           <Card.Img variant="top" src={Picaña} />
           <Card.Body>
-            <Card.Title className="font-weight-bold">
+            <Card.Title>
               <Row>
+                <Col className="ml-n2">
+                  <h2>Picaña Haye</h2>
+                </Col>
                 <Col>
-                  Picaña Haye
-              </Col>
-                <Col>
-                  <Col>
-                    <Badge className="badge" variant="primary"> El más pedido</Badge>
-                  </Col>
+                  <Badge className="badge ml-4" variant="primary">El más pedido</Badge>
                 </Col>
               </Row>
             </Card.Title>
             <Card.Text>
-              Deliciosa Picaña Haye
-                        <br></br>
-              <span><span>$</span>365.00</span>
+              <p1>Deliciosa Picaña Haye</p1>
+            </Card.Text>
+            <Card.Text>
+              <p1>$365.00</p1>
             </Card.Text>
           </Card.Body>
 
         </Card>
       </Link>
-
       <Accordion defaultActiveKey="0">
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="0">
