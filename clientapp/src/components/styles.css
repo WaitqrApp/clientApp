@@ -58,6 +58,10 @@
   }
 
 /* Pagina de Detalle Platillo*/
+.detalle-platillo {
+    padding-right: 0%  !important;
+    padding-left: 0% !important;
+}
 .platillo h1 {
     font-size: 100%;
     font-weight: bold;
@@ -93,7 +97,8 @@
 }
 
 .input-cantidad {
-    margin-left: 5%;
+    margin-left: 0%;
+    width: 25%;
 }
 
 .input-notas {

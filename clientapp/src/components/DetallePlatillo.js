@@ -9,71 +9,63 @@ function DetallePlatillo() {
 
 
     return (
-        <div className="detalle-platillo">
-            <BackButton/>
-            <Card className="platillo"> 
-                <Row>
-                    <Col sm={12} >
+        <Container fluid>
+            <Row>
+                <Col sm={12} className="detalle-platillo">
+                    <Card className="platillo">
+                        <BackButton />
                         <Card.Img className="imagen-detalle" variant="top" src={Picaña} />
-                    </Col>
-                </Row>
-                <Row className="mr-0">
-                    <Card.Body>
-                        <Card.Title className="font-weight-bold">
-                            <Row>
-                                <Col>
-                                    <h1>Picaña Haye</h1>
-                                </Col>
-                            </Row>
-                        </Card.Title>
-                        <Card.Text className="mt-3">
-                            <h2>Deliciosa Picaña Haye acompañada de tacos de tuetano y queso badón (Brie)</h2>
-                        </Card.Text>
-                        <Card.Text className="mt-2">
-                            <h3>$365.00</h3>
-                        </Card.Text>
-                    </Card.Body>
-                </Row>
-            </Card>
+                        <Card.Body>
+                            <Card.Title className="font-weight-bold">
+                                <h1>Picaña Haye</h1>
+                            </Card.Title>
+
+                            <Card.Text className="mt-3">
+                                <h2>Deliciosa Picaña Haye acompañada de tacos de tuetano y queso badón (Brie)</h2>
+                            </Card.Text>
+                            <Card.Text className="mt-2">
+                                <h3>$365.00</h3>
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
             <Row>
                 <Form>
-                    <Row className="input-cantidad ml-4 mt-3">
-                        <Form.Group>
-                            <Col sm={3}>
-                                <Form.Label>Cantidad</Form.Label>
+                    <Form.Group className="input-cantidad mt-2">
+                        <Col sm={3}>
+                            <Form.Label>Cantidad</Form.Label>
+                        </Col>
+                        <Col sm={9}>
+                            <Form.Control as="select">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </Form.Control>
+                        </Col>
+                    </Form.Group>
+                    <Form.Group className="input-notas">
+                        <Row>
+                            <Col sm={12}>
+                                <Form.Label>Notas para la cocina</Form.Label>
                             </Col>
-                            <Col sm={9}>
-                                <Form.Control as="select">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </Form.Control>
+                        </Row>
+                        <Row >
+                            <Col sm={12}>
+                                <Form.Control className="input-notas-texto" type="text" placeholder="Notas para la cocina" />
                             </Col>
-                        </Form.Group>
-                    </Row>
-                    <Row className="input-notas ml-4 mt-3">
-                        <Form.Group className="input-notas">
-                            <Row>
-                                <Col sm={12}>
-                                    <Form.Label>Notas para la cocina</Form.Label>
-                                </Col>
-                            </Row>
-                            <Row >
-                                <Col sm={12}>
-                                    <Form.Control className="input-notas-texto" type="text" placeholder="Notas para la cocina" />
-                                </Col>
-                            </Row>
-                        </Form.Group>
-                    </Row>
+                        </Row>
+                    </Form.Group>
                 </Form>
             </Row>
             <Row>
-                <Button className="confirmar mt-3">Agregar</Button>
+                <Col className="boton-ordenar">
+                    <Button className="confirmar mt-3">Agregar</Button>
+                </Col>
             </Row>
-
-        </div>
+        </Container>
     );
 }
 
