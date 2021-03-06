@@ -7,7 +7,6 @@ import './styles.css'
 
 function DetallePlatillo() {
 
-
     return (
         <Container fluid>
             <Row>

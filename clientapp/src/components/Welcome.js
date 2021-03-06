@@ -38,14 +38,14 @@ function Welcome() {
             <br></br>
             <br></br>
             <Row>
-                <Col className="boton-orden">
+                <Col className="boton-ordenar">
                     <Link to={'/MenuDigital'}>
                         <Button className="confirmar mt-3">Confirmar</Button>
                     </Link>
                 </Col>
             </Row>
             <Row>
-                <Col>
+                <Col className="boton-logo">
                     <Card.Img className="logo" variant="top" src={Logo} />
                 </Col>
             </Row>
