@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Col, Row, Button, Form, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Picaña from './Menu/picana-t.jpg';
 import BackButton from './Buttons/BackButton';
 
@@ -18,7 +19,6 @@ function DetallePlatillo() {
                             <Card.Title className="font-weight-bold">
                                 <h1>Picaña Haye</h1>
                             </Card.Title>
-
                             <Card.Text className="mt-3">
                                 <h2>Deliciosa Picaña Haye acompañada de tacos de tuetano y queso badón (Brie)</h2>
                             </Card.Text>
@@ -61,7 +61,9 @@ function DetallePlatillo() {
             </Row>
             <Row>
                 <Col className="boton-ordenar">
-                    <Button className="confirmar mt-3">Agregar</Button>
+                    <Link to={'/Orden'}>
+                        <Button className="confirmar mt-3">Agregar</Button>
+                    </Link>
                 </Col>
             </Row>
         </Container>
