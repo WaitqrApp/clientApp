@@ -2,8 +2,9 @@ import React from "react";
 import { Card, Col, Row, Badge, Button, Form, Container } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom'
-/*import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';*/
-import './styles.css'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import './styles.css';
+import BackButton from './Buttons/BackButton';
 
 function Orden() {
 
@@ -13,20 +14,16 @@ function Orden() {
         <Container fluid className="orden">
             <Row>
                 <Col className="mt-4">
-                    <Button variant="light" onClick={() => history.goBack()}>Back</Button>
+                    <BackButton/>
                 </Col>
                 <Col className="mt-4">
                     <h1>Carrito</h1>
                 </Col>
                 <Col className="mt-4">
-                    <h1>Carrito Icon</h1>
+                    <ShoppingCartIcon />
                 </Col>
             </Row>
-            <Row>
-                <Col >
-                    {/*                     <ShoppingCartIcon/> */}
-                </Col>
-            </Row>
+            
             <Row>
                 <Col className="mt-4 mb-2">
                     <h1>Entradas</h1>
@@ -35,9 +32,9 @@ function Orden() {
             <Row>
                 <Col>
                     <Card className="platillo-orden">
-                            <Card.Text className="mr-5">Picaña Haye</Card.Text>
-                            <Card.Text className="mr-0">$500</Card.Text>
-                            <Card.Text className="mr-0">Botones de cantidad</Card.Text>
+                        <Card.Text className="mr-5">Picaña Haye</Card.Text>
+                        <Card.Text className="mr-0">$500</Card.Text>
+                        <Card.Text className="mr-0">Botones de cantidad</Card.Text>
                     </Card>
                 </Col>
             </Row>
