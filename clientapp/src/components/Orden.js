@@ -51,7 +51,7 @@ function Orden() {
                     <h1>Notas para la cocina</h1>
                 </Col>
                 <Col className="notas-texto" sm={8}>
-                    <h2>Notas</h2>
+                    <Form.Control as="textarea" rows={2} />
                 </Col>
             </Row>
             <Row>
