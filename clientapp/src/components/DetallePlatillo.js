@@ -9,11 +9,13 @@ import './styles.css'
 function DetallePlatillo() {
 
     return (
-        <Container>
-            <BackButton/>
-            <Card className="platillo"> 
-                <Row>
-                    <Col sm={12} >
+        <Container fluid>
+            <Row>
+                <Col sm={12} className="detalle-platillo">
+                    <Card className="platillo">
+                        <Card.ImgOverlay>
+                        <BackButton/>
+                        </Card.ImgOverlay>
                         <Card.Img className="imagen-detalle" variant="top" src={Picaña} />
                         <Card.Body>
                             <Card.Title className="font-weight-bold">
