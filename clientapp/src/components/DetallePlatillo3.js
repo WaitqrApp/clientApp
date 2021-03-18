@@ -14,7 +14,7 @@ function DetallePlatillo() {
                 <Card className="platillo">
                     <Row className="ml-auto mr-auto">
                         <Col sm={12} >
-                            <BackButton />
+                            <BackButton className="boton-back" />
                             <Card.Img className="imagen-detalle" variant="top" src={Picaña} />
                         </Col>
                     </Row>

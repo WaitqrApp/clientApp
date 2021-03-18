@@ -13,20 +13,20 @@ function Orden() {
     return (
         <Container fluid className="orden">
             <Row>
-                <Col className="mt-4">
+                <Col className="mt-4 ml-auto mr-auto" >
                     <BackButton/>
                 </Col>
-                <Col className="mt-4">
+                <Col className="mt-4" >
                     <h1>Carrito</h1>
                 </Col>
-                <Col className="mt-4">
-                    <ShoppingCartIcon />
+                <Col className="mt-4" >
+                    <ShoppingCartIcon className="carrito"/>
                 </Col>
             </Row>
             
             <Row>
                 <Col className="mt-4 mb-2">
-                    <h1>Entradas</h1>
+                    <h3>Entradas</h3>
                 </Col>
             </Row>
             <Row>

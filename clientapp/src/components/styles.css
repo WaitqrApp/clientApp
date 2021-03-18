@@ -58,6 +58,16 @@
   }
 
 /* Pagina de Detalle Platillo*/
+
+.boton-back {
+    background-color: #efb73d79;
+    border-color: #efb73d79;
+}
+
+.boton-back:hover {
+    background-color: #EFB63D;
+    border-color: #EFB63D;
+  }
 .detalle-platillo {
     padding-right: 0%  !important;
     padding-left: 0% !important;
@@ -107,7 +117,7 @@
     margin-right: auto;
 }
 .input-notas-texto {
-width: 90vw;
+width: 93vw;
 height: 10vh;
 margin-left: auto;
 margin-right: auto;
@@ -115,16 +125,40 @@ margin-right: auto;
 
 /* Pagina de Orden*/
 
+.carrito {
+    color: #EFB63D;
+    margin-left: auto;
+    margin-top: 5%;
+    margin-right: 20%;
+    transform: scale(1.5);
+    position: absolute;
+    right: 0;
+}
+
 .orden h1 {
     font-size: 100%;
     font-weight: bold;
+    margin-top: auto;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     color: rgb(7, 46, 72);
 }
 
 .orden h2 {
     font-size: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(7, 46, 72);
+}
+
+.orden h3 {
+    font-size: 100%;
+    font-weight: bold;
+    margin-top: auto;
     margin-left: auto;
     margin-right: auto;
     color: rgb(7, 46, 72);
@@ -136,6 +170,7 @@ margin-right: auto;
 
 .boton-ordenar {
     position: absolute;
+    width: 99vh;
     margin-left: auto;
     margin-right: auto;
     bottom:0;

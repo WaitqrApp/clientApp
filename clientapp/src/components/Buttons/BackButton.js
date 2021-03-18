@@ -9,7 +9,7 @@ function BackButton() {
 
     return (
         <Container>
-            <Button variant = "light" onClick={() => history.goBack()}><ArrowBackIcon/></Button>
+            <Button className="boton-back" onClick={() => history.goBack()}><ArrowBackIcon/></Button>
         </Container>
     );
 }
