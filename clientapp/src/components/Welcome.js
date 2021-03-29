@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Row, Col, Dropdown, DropdownButton, Button, Card, Container } from 'react-bootstrap';
+import { Row, Col, Form, Button, Card, Container } from 'react-bootstrap';
 import "./styles.css"
 import Logo from './logo_waitqr.png';
 
@@ -23,13 +23,13 @@ function Welcome() {
             </Row>
             <Row>
                 <Col className="mesa">
-                    <DropdownButton className="mesa ml-auto mr-auto" title="mesa 1" variant="light">
-                        <Dropdown.Item eventKey="1">2</Dropdown.Item>
-                        <Dropdown.Item eventKey="2">3</Dropdown.Item>
-                        <Dropdown.Item eventKey="3">4</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item eventKey="4">?</Dropdown.Item>
-                    </DropdownButton>
+                <Form.Control className="mesa" title="mesa 1" as="select">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                </Form.Control>
                 </Col>
             </Row>
             <br></br>

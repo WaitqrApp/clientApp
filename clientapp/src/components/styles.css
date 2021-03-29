@@ -27,12 +27,24 @@
 }
 
 .confirmar {
+    position: absolute;
     width: 90vw;
     height: 6vh;
     margin-left:auto;
     margin-right: auto;
     background-color: #EFB63D;
     border-color: #EFB63D;
+    bottom:0;
+    margin-bottom: 5%;
+}
+
+.boton-ordenar {
+    position: absolute;
+    width: 99vh;
+    margin-left: auto;
+    margin-right: auto;
+    bottom:0;
+    margin-bottom: 5%;
 }
 
 .confirmar:focus {
@@ -48,6 +60,7 @@
 .mesa {
     margin-left:auto;
     margin-right: auto;
+    width: 20%;
   }
 
 .logo {
@@ -166,15 +179,6 @@ margin-right: auto;
 
 .platillo-orden {
     flex-direction: row;
-}
-
-.boton-ordenar {
-    position: absolute;
-    width: 99vh;
-    margin-left: auto;
-    margin-right: auto;
-    bottom:0;
-    margin-bottom: 5%;
 }
 
 .boton-logo {
