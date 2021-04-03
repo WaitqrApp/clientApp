@@ -47,15 +47,15 @@ function Orden() {
                 </Col>
             </Row>
             <Row>
-                <Col className="notas-titulo" sm={4}>
+                <Col className="notas-titulo">
                     <h1>Notas para la cocina</h1>
                 </Col>
-                <Col className="notas-texto" sm={8}>
+                <Col className="notas-texto">
                     <Form.Control as="textarea" rows={2} />
                 </Col>
             </Row>
             <Row>
-                <Col className="boton-ordenar" sm={12}>
+                <Col className="boton-ordenar">
                     <Link to={'/estatus'}>
                         <Button className="confirmar" variant="primary">Confirmar</Button>
                     </Link>

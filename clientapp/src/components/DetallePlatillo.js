@@ -32,39 +32,31 @@ function DetallePlatillo() {
                 </Col>
             </Row>
             <Row>
-                <Form>
-                    <Form.Group className="input-cantidad mt-2">
-                        <Col sm={3}>
+                <Form className="form-cantidad">
+                    <Form.Group className="input-cantidad mt-3 ml-4">
                             <Form.Label>Cantidad</Form.Label>
-                        </Col>
-                        <Col sm={9}>
-                            <Form.Control as="select">
+                            <Form.Control className="input-cantidad" as="select">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
                                 <option>5</option>
                             </Form.Control>
-                        </Col>
                     </Form.Group>
-                    <Form.Group className="input-notas">
-                        <Row>
-                            <Col sm={12}>
-                                <Form.Label>Notas para la cocina</Form.Label>
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col sm={12}>
-                                <Form.Control className="input-notas-texto" type="text" placeholder="Notas para la cocina" />
-                            </Col>
-                        </Row>
+                </Form>
+            </Row>
+            <Row>
+                <Form>
+                    <Form.Group className="input-notas ml-4">
+                        <Form.Label>Notas para la cocina</Form.Label>
+                        <Form.Control className="input-notas-texto" type="text" placeholder="" />
                     </Form.Group>
                 </Form>
             </Row>
             <Row>
                 <Col className="boton-ordenar">
                     <Link to={'/Orden'}>
-                        <Button className="confirmar mt-3">Agregar</Button>
+                        <Button className="confirmar">Agregar</Button>
                     </Link>
                 </Col>
             </Row>

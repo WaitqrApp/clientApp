@@ -22,8 +22,9 @@ function MenuDigital() {
         <Form.Control type="text" placeholder="Busca un platillo" />
       </InputGroup>
       <h2>Lo más recomendado</h2>
-      <Link to={'/DetallePlatillo'}>
+     
         <Card className="mb-4" style={{ flex: 1 }}>
+        <Link to={'/DetallePlatillo'}>
           <Card.Img variant="top" src={Picaña} />
           <Card.Body>
             <Card.Title>
@@ -43,9 +44,8 @@ function MenuDigital() {
               <p1>$365.00</p1>
             </Card.Text>
           </Card.Body>
-
+          </Link>
         </Card>
-      </Link>
       <Accordion defaultActiveKey="0">
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="0">

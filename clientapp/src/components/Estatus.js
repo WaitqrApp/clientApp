@@ -32,9 +32,9 @@ function Estatus() {
                 </Col>
             </Row>
             <Row>
-                <Col className="boton-ordenar" sm={12}>
+                <Col className="boton-ordenar">
                     <Link to={'/MenuDigital'}>
-                        <Button className="confirmar" variant="primary">Ordenar Algo Más</Button>
+                        <Button className="confirmar mt-3">Ordenar Algo Más</Button>
                     </Link>
                 </Col>
             </Row>

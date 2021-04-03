@@ -35,7 +35,7 @@
     background-color: #EFB63D;
     border-color: #EFB63D;
     bottom:0;
-    margin-bottom: 5%;
+    margin-bottom: 0%;
 }
 
 .boton-ordenar {
@@ -47,7 +47,7 @@
     margin-bottom: 5%;
 }
 
-.confirmar:focus {
+.confirmar:active {
     background-color: #EFB63D;
     border-color: #EFB63D;
   }
@@ -75,6 +75,7 @@
 .boton-back {
     background-color: #efb73de1;
     border-color: #efb73de1;
+    margin-left: -5%;
 }
 
 .boton-back:hover {
@@ -120,8 +121,14 @@
 }
 
 .input-cantidad {
-    margin-left: 0%;
-    width: 25%;
+    width: 40%;
+    left: 100;
+    margin-left: 175%;
+    margin-top: -22%; 
+}
+
+.form-cantidad {
+    width: 100%;
 }
 
 .input-notas {
@@ -130,7 +137,7 @@
     margin-right: auto;
 }
 .input-notas-texto {
-width: 93vw;
+width: 85vw;
 height: 10vh;
 margin-left: auto;
 margin-right: auto;
@@ -138,10 +145,16 @@ margin-right: auto;
 
 /* Pagina de Orden*/
 
+.orden {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
 .carrito {
     color: #EFB63D;
     margin-left: auto;
-    margin-top: 5%;
+    margin-top: 0%;
     margin-right: 20%;
     transform: scale(1.5);
     position: absolute;
