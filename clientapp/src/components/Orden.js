@@ -30,10 +30,10 @@ function Orden() {
     return (
         <Container fluid className="orden">
             <Row>
-                <Col className="mt-4 ml-auto mr-auto" >
-                    <BackButton/>
+                <Col className="" >
+                    <BackButton className="boton-back-orden"/>
                 </Col>
-                <Col className="mt-4" >
+                <Col className="titulo-carrito mt-4" >
                     <h1>Carrito</h1>
                 </Col>
                 <Col className="mt-4" >
