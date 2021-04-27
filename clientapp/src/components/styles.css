@@ -191,6 +191,11 @@ margin-right: auto;
     overflow-x: hidden;
 }
 
+.platillos {
+    overflow: auto;
+    height: 48vh;
+}
+
 .titulo-carrito {
     position: relative;
     
@@ -284,6 +289,7 @@ margin-right: auto;
     position: absolute;
     bottom:0;
     margin-bottom: 55%;
+    background-color: white;
 }
 .total-texto {
     right: 0;

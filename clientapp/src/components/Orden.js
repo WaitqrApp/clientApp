@@ -46,7 +46,7 @@ function Orden() {
                     <h3>Entradas</h3>
                 </Col>
             </Row>
-            <Row>
+            <Row className="platillos">
                 <Col>
                     <Card className="platillo-orden mb-2">
                         <Card.Text className="mr-4 ml-1 mt-3 mb-n2">Picaña Haye</Card.Text>
@@ -55,7 +55,35 @@ function Orden() {
                         <Card.Text className="platillo-orden-cantidad mt-3">{count}</Card.Text>
                         <AddBoxIcon  onClick={increaseCount} className="mas mt-3"/>
                     </Card>
-                    <Card className="platillo-orden">
+                    <Card className="platillo-orden mb-2">
+                        <Card.Text className="mr-4 ml-1 mt-3 mb-n2">Picaña Haye</Card.Text>
+                        <Card.Text className="ml-4 mt-3">$500</Card.Text>
+                        <IndeterminateCheckBoxIcon onClick={decreaseCount} className="menos mt-3"/>
+                        <Card.Text className="platillo-orden-cantidad mt-3">{count}</Card.Text>
+                        <AddBoxIcon onClick={increaseCount} className="mas mt-3"/>
+                    </Card>
+                    <Card className="platillo-orden mb-2">
+                        <Card.Text className="mr-4 ml-1 mt-3 mb-n2">Picaña Haye</Card.Text>
+                        <Card.Text className="ml-4 mt-3">$500</Card.Text>
+                        <IndeterminateCheckBoxIcon onClick={decreaseCount} className="menos mt-3"/>
+                        <Card.Text className="platillo-orden-cantidad mt-3">{count}</Card.Text>
+                        <AddBoxIcon  onClick={increaseCount} className="mas mt-3"/>
+                    </Card>
+                    <Card className="platillo-orden mb-2">
+                        <Card.Text className="mr-4 ml-1 mt-3 mb-n2">Picaña Haye</Card.Text>
+                        <Card.Text className="ml-4 mt-3">$500</Card.Text>
+                        <IndeterminateCheckBoxIcon onClick={decreaseCount} className="menos mt-3"/>
+                        <Card.Text className="platillo-orden-cantidad mt-3">{count}</Card.Text>
+                        <AddBoxIcon onClick={increaseCount} className="mas mt-3"/>
+                    </Card>
+                    <Card className="platillo-orden mb-2">
+                        <Card.Text className="mr-4 ml-1 mt-3 mb-n2">Picaña Haye</Card.Text>
+                        <Card.Text className="ml-4 mt-3">$500</Card.Text>
+                        <IndeterminateCheckBoxIcon onClick={decreaseCount} className="menos mt-3"/>
+                        <Card.Text className="platillo-orden-cantidad mt-3">{count}</Card.Text>
+                        <AddBoxIcon  onClick={increaseCount} className="mas mt-3"/>
+                    </Card>
+                    <Card className="platillo-orden mb-2">
                         <Card.Text className="mr-4 ml-1 mt-3 mb-n2">Picaña Haye</Card.Text>
                         <Card.Text className="ml-4 mt-3">$500</Card.Text>
                         <IndeterminateCheckBoxIcon onClick={decreaseCount} className="menos mt-3"/>
