@@ -6,7 +6,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import './styles.css';
-import BackButton from './Buttons/BackButton';
+import BackButtonOrden from './Buttons/BackButtonOrden';
 import { Prev } from "react-bootstrap/esm/PageItem";
 
 function Orden() {
@@ -31,7 +31,7 @@ function Orden() {
         <Container fluid className="orden">
             <Row>
                 <Col className="" >
-                    <BackButton className="boton-back-orden"/>
+                    <BackButtonOrden className="boton-back-orden"/>
                 </Col>
                 <Col className="titulo-carrito mt-4" >
                     <h1>Carrito</h1>
@@ -90,7 +90,20 @@ function Orden() {
                         <Card.Text className="platillo-orden-cantidad mt-3">{count}</Card.Text>
                         <AddBoxIcon onClick={increaseCount} className="mas mt-3"/>
                     </Card>
-                    
+                    <Card className="platillo-orden mb-2">
+                        <Card.Text className="mr-4 ml-1 mt-3 mb-n2">Picaña Haye</Card.Text>
+                        <Card.Text className="ml-4 mt-3">$500</Card.Text>
+                        <IndeterminateCheckBoxIcon onClick={decreaseCount} className="menos mt-3"/>
+                        <Card.Text className="platillo-orden-cantidad mt-3">{count}</Card.Text>
+                        <AddBoxIcon  onClick={increaseCount} className="mas mt-3"/>
+                    </Card>
+                    <Card className="platillo-orden mb-2">
+                        <Card.Text className="mr-4 ml-1 mt-3 mb-n2">Picaña Haye</Card.Text>
+                        <Card.Text className="ml-4 mt-3">$500</Card.Text>
+                        <IndeterminateCheckBoxIcon onClick={decreaseCount} className="menos mt-3"/>
+                        <Card.Text className="platillo-orden-cantidad mt-3">{count}</Card.Text>
+                        <AddBoxIcon onClick={increaseCount} className="mas mt-3"/>
+                    </Card>
                 </Col>
             </Row>
             <Row className="total">
@@ -99,14 +112,6 @@ function Orden() {
                 </Col>
                 <Col className="total-texto">
                     <h1>$518</h1>
-                </Col>
-            </Row>
-            <Row>
-                <Col className="notas-titulo">
-                    <h1>Notas para la cocina</h1>
-                </Col>
-                <Col className="notas-texto">
-                    <Form.Control as="textarea" rows={2} />
                 </Col>
             </Row>
             <Row>

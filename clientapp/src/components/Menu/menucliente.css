@@ -52,3 +52,14 @@
 .imagen-platillo {
     border-radius: 30%;
 }
+
+.carrito-menu {
+    color: #EFB63D;
+    margin-left: auto;
+    margin-top: 7%;
+    margin-right: 7%;
+    transform: scale(1.5);
+    position: absolute;
+    right: 0;
+    top: 0;
+}
