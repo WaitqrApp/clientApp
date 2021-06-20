@@ -344,3 +344,17 @@ flex-wrap:wrap;
     margin-top: 10%;
     text-align: center;
 }
+
+.resumen-orden-card {
+    overflow: auto;
+    width: 90%;
+    height: 40vh;
+}
+
+.nombre-platillo {
+    font-weight: bold;
+}
+
+.comentatrios-platillo {
+    font-size: small;
+}
