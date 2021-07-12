@@ -13,6 +13,14 @@ import Menu from './Menu';
 
 import './Menu/menucliente.css'
 
+import Picaña from "./Menu/picana-t.jpg";
+import Papas from "./papas-gajo.jpg";
+import SearchIcon from "@material-ui/icons/Search";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import ReactCardCarousel from "react-card-carousel";
+
+import "./Menu/menucliente.css";
+import { Divider } from "@material-ui/core";
 
 function MenuDigital() {
 
@@ -47,12 +55,19 @@ const seleccionarMenu = menu => {
     <div className="menu-principal">
       <h1>{restaurantes.nombre}</h1>
       <p>{mesa[0].numero}</p>
+      <Link to={"/Orden"}>
+        <ShoppingCartIcon className="carrito-menu" />
+      </Link>
+
       <InputGroup className="searchbar">
         <InputGroup.Prepend>
-          <InputGroup.Text id="basic-addon1"><SearchIcon /></InputGroup.Text>
+          <InputGroup.Text id="basic-addon1">
+            <SearchIcon />
+          </InputGroup.Text>
         </InputGroup.Prepend>
         <Form.Control type="text" placeholder="Busca un platillo" />
       </InputGroup>
+
       <h2>Lo más recomendado</h2>
      
         <Card className="mb-4" style={{ flex: 1 }}>

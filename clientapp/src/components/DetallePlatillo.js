@@ -48,8 +48,7 @@ function DetallePlatillo() {
             <Row>
                 <Form>
                     <Form.Group className="input-notas ml-4">
-                        <Form.Label>Notas para la cocina</Form.Label>
-                        <Form.Control className="input-notas-texto" type="text" placeholder="" />
+                        <textarea className="input-notas-texto form-control" rows="3" placeholder="Notas para la cocina"></textarea>
                     </Form.Group>
                 </Form>
             </Row>
