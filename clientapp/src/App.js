@@ -6,10 +6,23 @@ import MenuDigital from './components/MenuDigital.js';
 import DetallePlatillo from './components/DetallePlatillo';
 import Orden from './components/Orden'
 import Estatus from './components/Estatus'
-/* Describe el contenido del canvas central */
+
+import RestauranteState from './context/restaurantes/restauranteState';
+import MesaState from './context/mesas/mesasState';
+import MenuState from './context/menus/menusState';
+import SeccionState from './context/secciones/seccionesState';
+import PlatillosState from './context/platillos/platillosState';
+
 function App() {
+   
+  console.log(process.env.REACT_APP_BACKEND_URL);
 
   return (
+    <RestauranteState>
+      <MesaState>
+        <MenuState>
+          <SeccionState>
+            <PlatillosState>
         <Router>
           <Switch>
             <Route exact path="/" component={Welcome} />
@@ -19,6 +32,11 @@ function App() {
             <Route exact path="/Estatus" component={Estatus} />
           </Switch>
         </Router>
+        </PlatillosState>
+        </SeccionState>
+        </MenuState>
+        </MesaState>
+        </RestauranteState>
   );
 }
 

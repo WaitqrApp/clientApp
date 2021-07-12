@@ -1,20 +1,52 @@
-import React from "react";
+import React, {useEffect, useContext, useState} from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Form, Card, Col, Row, Accordion, Badge, Container, InputGroup } from 'react-bootstrap';
-import Picaña from './Menu/picana-t.jpg';
-import Papas from './papas-gajo.jpg';
+import { Form, Card, Col, Row, Accordion, Badge, Container, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import SearchIcon from '@material-ui/icons/Search';
+import Picaña from './Menu/picana-t.jpg';
+
+import restauranteContext from '../context/restaurantes/restauranteContext';
+import mesasContext from '../context/mesas/mesasContext';
+import menusContext from '../context/menus/menusContext';
+
+import Menu from './Menu';
 
 import './Menu/menucliente.css'
 
 
 function MenuDigital() {
+
+   //Extraer restaurantes de state inicial
+ const restaurantesContext = useContext(restauranteContext);
+ const { restaurantes, restaurante, obtenerUnRestaurante, guardarRestauranteActual} = restaurantesContext;
+
+ const mesassContext = useContext(mesasContext);
+ const { mesasrestaurante, mesa, obtenerMesas, guardarMesaActual} = mesassContext;
+
+ const menussContext = useContext(menusContext);
+    const { menusrestaurante, menu, obtenerMenus, guardarMenuActual } = menussContext;
+
+
+
+    const [menuEscogido, guardarMenuEscogido] = useState('');
+
+ useEffect(() => {
+  obtenerUnRestaurante(restaurante);
+  obtenerMenus(restaurante);
+  
+}, []);
+
+//Funcion para agregar el menu actual
+const seleccionarMenu = menu => {
+  guardarMenuActual(menu._id); //fijar un menu actual
+  guardarMenuEscogido(menu.nombre);
+}
+
   let history = useHistory();
   return (
     <div className="menu-principal">
-      <h1>La Noria</h1>
-      <p>Mesa 1</p>
+      <h1>{restaurantes.nombre}</h1>
+      <p>{mesa[0].numero}</p>
       <InputGroup className="searchbar">
         <InputGroup.Prepend>
           <InputGroup.Text id="basic-addon1"><SearchIcon /></InputGroup.Text>
@@ -46,35 +78,36 @@ function MenuDigital() {
           </Card.Body>
           </Link>
         </Card>
-      <Accordion defaultActiveKey="0">
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="0">
-            <h3 className="mt-2">Entradas</h3>
-          </Accordion.Toggle>
-          <Accordion.Collapse eventKey="0">
-            <Card.Body>
-              <Container className="contenedor-platillo">
-                <Row>
-                  <Col xs={3}><Card.Img className="imagen-platillo img-fluid" variant="top" src={Papas} /></Col>
-                  <Col xs={6}><h3 className="mt-3" >Papas Gajo</h3></Col>
-                  <Col xs={3}><h3 className="mt-3" >$250</h3></Col>
-                </Row>
-              </Container>
-            </Card.Body>
-          </Accordion.Collapse>
-          <Accordion.Collapse eventKey="0">
-            <Card.Body><h3 className="mt-4" >Guacamole con Totopos</h3></Card.Body>
-          </Accordion.Collapse>
-        </Card>
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="1">
-            <h3 className="mt-2">Comidas</h3>
-          </Accordion.Toggle>
-          <Accordion.Collapse eventKey="1">
-            <Card.Body><h3>Papas con Tofu</h3></Card.Body>
-          </Accordion.Collapse>
-        </Card>
-      </Accordion>
+
+        <Form >
+            <Row>
+                <Col className="mesa">
+                
+                <DropdownButton
+                >
+                <Dropdown.Item>Selecciona un menu</Dropdown.Item>
+                {menusrestaurante.map(menu => (
+                                <Dropdown.Item
+                                onClick={() => seleccionarMenu(menu)}
+                                >{menu.nombre}</Dropdown.Item>
+                                ))}          
+                </DropdownButton>
+                 
+                </Col>
+            </Row>
+            </Form>
+                  {
+                    menuEscogido ?(
+                      <Menu
+                      menu={menu}
+                    />)
+                    :(<p>Escoge un menu</p>
+                      )
+                      
+                  }
+            
+
+      
     </div>
   );
 }
