@@ -6,9 +6,12 @@ import Logo from './logo_waitqr.png';
 
 import restauranteContext from '../context/restaurantes/restauranteContext';
 import mesasContext from '../context/mesas/mesasContext';
+import sesionGeneralContext from '../context/sesionesGenerales/sesionGeneralContext';
+import { useHistory } from "react-router-dom";
 
 function Welcome() {
 
+    let history = useHistory();
  //Extraer restaurantes de state inicial
  const restaurantesContext = useContext(restauranteContext);
  const { restaurantes, obtenerUnRestaurante, guardarRestauranteActual} = restaurantesContext;
@@ -16,16 +19,38 @@ function Welcome() {
  const mesassContext = useContext(mesasContext);
  const { mesasrestaurante, mesa, obtenerMesas, guardarMesaActual} = mesassContext;
 
+ const sesionGeneralsContext = useContext(sesionGeneralContext);
+ const { sesiongeneralmesa, obtenerSesionGeneral, agregarSesionGeneral} = sesionGeneralsContext;
+
+ const[error, guardarError] = useState(false)
+
+
  const [seleccion, guardarSeleccion] = useState({
      restauranteId: "",
      mesaId:""
  })
 
+ const [ sesionGeneralAux, guardarSesionGeneralAux] = useState({
+
+     horarioInicio: '',
+     mesa: '',
+     restaurante:''
+ })
+
+ const [formulario, guardarFormulario] = useState({
+     mesaNombre : ''
+ })
+
+ const {mesaNombre} = formulario
+
+
+
  const {restauranteId, mesaId} = seleccion
 
  useEffect(() => {
     obtenerUnRestaurante("5fd817645515ba5728db0adc");
-    obtenerMesas("5fd817645515ba5728db0adc")
+    obtenerMesas("5fd817645515ba5728db0adc");
+    obtenerSesionGeneral(sesionGeneralAux.mesa)
     
     
 }, []); //para que corra solo una vez
@@ -34,12 +59,44 @@ seleccion.restauranteId = restaurantes._id
 
 //leer los valores del formulario
 
-const handleChange = (e) => {
+const handleChange = e => {
+    guardarFormulario({
+        ...formulario,
+        [e.target.name]: e.target.value
+      })
     let obj = JSON.parse(e.target.value);
     guardarMesaActual(obj._id)
+    sesionGeneralAux.mesa = obj._id
     guardarRestauranteActual("5fd817645515ba5728db0adc")
     console.log(mesa)
+    
   };
+
+  const revisarFormulario = e =>{
+    if(formulario.mesaNombre === ''){
+      guardarError(true);
+      
+    }
+    else{
+      if(mesa){
+          //console.log("si hubo mesita" + sesionGeneralAux.mesa)
+          //console.log(sesiongeneralmesa)
+          
+          if(!sesiongeneralmesa[0]){
+              //console.log(sesiongeneralmesa)
+              //console.log("no habia sesionGeneral")
+              sesionGeneralAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
+              sesionGeneralAux.restaurante =  restaurantes._id
+              console.log(sesionGeneralAux)
+              agregarSesionGeneral(sesionGeneralAux)
+          }
+          history.push("/MenuDigital");
+      }
+      
+    }
+}
+
+
     return (
         <Container fluid className="bienvenido">
             <Row>
@@ -61,7 +118,7 @@ const handleChange = (e) => {
                 
                 <Form.Control
                 onChange={handleChange}
-                name="mesaId"
+                name="mesaNombre"
                 className="mesa" title="mesa 1" as="select">
                 <option>Selecciona una mesa</option>
                 {mesasrestaurante.map(mesa => (
@@ -74,7 +131,14 @@ const handleChange = (e) => {
                 </Form.Control>
                  
                 </Col>
+                
+
             </Row>
+            {error?
+                <div className="text-center mt-4">
+                    <p id="alerta ">Falto seleccionar una mesa</p>
+                </div>
+                : null}
             <br></br>
             <br></br>
             <br></br>
@@ -82,9 +146,10 @@ const handleChange = (e) => {
             <br></br>
             <Row>
                 <Col className="boton-ordenar">
-                    <Link to={'/MenuDigital'}>
-                        <Button type="submit" className="confirmar mt-3">Confirmar</Button>
-                    </Link>
+                   
+                    
+                        <Button  className="confirmar mt-3" onClick={() => revisarFormulario()}>Confirmar</Button>
+                    
                 </Col>
             </Row>
             </Form>

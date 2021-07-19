@@ -8,19 +8,18 @@ import Picaña from './Menu/picana-t.jpg';
 import restauranteContext from '../context/restaurantes/restauranteContext';
 import mesasContext from '../context/mesas/mesasContext';
 import menusContext from '../context/menus/menusContext';
+import sesionGeneralContext from '../context/sesionesGenerales/sesionGeneralContext';
+import sesionIndividualContext from '../context/sesionesIndividuales/sesionIndividualContext';
 
 import Menu from './Menu';
 
 import './Menu/menucliente.css'
-
-import Picaña from "./Menu/picana-t.jpg";
 import Papas from "./papas-gajo.jpg";
-import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import ReactCardCarousel from "react-card-carousel";
 
 import "./Menu/menucliente.css";
 import { Divider } from "@material-ui/core";
+
 
 function MenuDigital() {
 
@@ -34,13 +33,26 @@ function MenuDigital() {
  const menussContext = useContext(menusContext);
     const { menusrestaurante, menu, obtenerMenus, guardarMenuActual } = menussContext;
 
+    const sesionGeneralsContext = useContext(sesionGeneralContext);
+    const { sesiongeneralmesa, obtenerSesionGeneral, agregarSesionGeneral} = sesionGeneralsContext;
+
+    const sesionIndividualsContext = useContext(sesionIndividualContext);
+    const { sesionindividualsesiongeneral, obtenerSesionIndividual, agregarSesionIndividual} = sesionIndividualsContext;
 
 
     const [menuEscogido, guardarMenuEscogido] = useState('');
 
+    const [ sesionIndividualAux, guardarSesionIndividualAux] = useState({
+    
+      horarioInicio: '',
+      sesionGeneral: '',
+      restaurante:''
+  })
+
  useEffect(() => {
   obtenerUnRestaurante(restaurante);
   obtenerMenus(restaurante);
+  obtenerSesionGeneral(mesa[0]._id);
   
 }, []);
 
@@ -50,7 +62,19 @@ const seleccionarMenu = menu => {
   guardarMenuEscogido(menu.nombre);
 }
 
-  let history = useHistory();
+if(sesiongeneralmesa[0]){
+  //console.log(sesiongeneralmesa)
+  //console.log("no habia sesionGeneral")
+  sesionIndividualAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
+  sesionIndividualAux.restaurante =  restaurantes._id
+  //sesionIndividualAux.sesionGeneral =  sesionindividualsesiongeneral[0]._id
+
+  console.log(sesionIndividualAux)
+  agregarSesionIndividual(sesionIndividualAux)
+}
+
+
+
   return (
     <div className="menu-principal">
       <h1>{restaurantes.nombre}</h1>

@@ -19,37 +19,39 @@ function Menu({menu}){
     obtenerSecciones(menu[0]._id);
   }, [menu]);
 
+  const [seccionSeleccionada, guardarSeccionSeleccionada] = useState({});
+
   const seleccionarSeccion = seccion =>{
+    console.log("seleccione:" + seccion.nombre)
     guardarSeccionActual(seccion._id)
+    guardarSeccionSeleccionada(seccion)
+    console.log("seccionSeleccionada" + seccionSeleccionada.nombre)
 }
 
+
+
     return(
-        
+        <>
     <Accordion defaultActiveKey="0">
-        {seccionesmenu.map((seccion, i) => (
+        {seccionesmenu.map(seccion => (
         <Card>
         
-          <Accordion.Toggle as={Card.Header} eventKey={i} onClick={() => seleccionarSeccion(seccion)}>
+          <Accordion.Toggle as={Card.Header}  key={seccion._id}  eventKey={seccion._id} onClick={() => seleccionarSeccion(seccion)}>
             <h3 className="mt-2">{seccion.nombre}</h3>
           </Accordion.Toggle>
-          <Accordion.Collapse eventKey={i}>
+          <Accordion.Collapse key={seccion._id}  eventKey={seccion._id}>
             <Card.Body>
               <MenuPlatillo
-              seccion = {seccion}
+              seccionSeleccionada = {seccionSeleccionada}
               />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
         ))}
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="1">
-            <h3 className="mt-2">Comidas</h3>
-          </Accordion.Toggle>
-          <Accordion.Collapse eventKey="1">
-            <Card.Body><h3>Papas con Tofu</h3></Card.Body>
-          </Accordion.Collapse>
-        </Card>
+        
       </Accordion>
+      <br/><br/>
+          </>
 
     );
   

@@ -5,7 +5,11 @@ import BackButton from './Buttons/BackButton';
 
 import './styles.css'
 
+import platillosContext from '../context/platillos/platillosContext';
+
+
 function DetallePlatillo() {
+
 
 
     return (

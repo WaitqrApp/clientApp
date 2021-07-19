@@ -41,7 +41,7 @@ export default (state, action) => {
         case PLATILLO_ACTUAL:
         return{
             ...state,
-            platillo: state.platillosseccion.filter(platillo => platillo._id === action.payload)
+            platillo:  action.payload
         }
         case LIMPIAR_PLATILLO:
             return{

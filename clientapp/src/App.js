@@ -12,6 +12,9 @@ import MesaState from './context/mesas/mesasState';
 import MenuState from './context/menus/menusState';
 import SeccionState from './context/secciones/seccionesState';
 import PlatillosState from './context/platillos/platillosState';
+import SesionGeneralState from './context/sesionesGenerales/sesionGeneralState';
+import SesionIndividualState from './context/sesionesIndividuales/sesionIndividualState';
+
 
 function App() {
    
@@ -23,6 +26,9 @@ function App() {
         <MenuState>
           <SeccionState>
             <PlatillosState>
+              <SesionGeneralState>
+                <SesionIndividualState>
+               
         <Router>
           <Switch>
             <Route exact path="/" component={Welcome} />
@@ -32,6 +38,8 @@ function App() {
             <Route exact path="/Estatus" component={Estatus} />
           </Switch>
         </Router>
+        </SesionIndividualState>
+        </SesionGeneralState>
         </PlatillosState>
         </SeccionState>
         </MenuState>
