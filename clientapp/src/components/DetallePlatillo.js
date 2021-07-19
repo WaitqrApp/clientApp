@@ -14,8 +14,8 @@ function DetallePlatillo() {
     const platillossContext = useContext(platillosContext);
     const { platillosseccion, platillo, obtenerPlatillos, guardarPlatilloActual } = platillossContext;
     console.log("llego este platillo" + platillo.nombre)
-    var arregloOrdenLocal = []
     
+    var arregloOrdenLocal = []
     const guardarPlatilloEnOrdenLocal = platillo =>{
         var aux = JSON.parse(localStorage.getItem('ordenLocal'))
         if(aux){
@@ -30,10 +30,10 @@ function DetallePlatillo() {
             arregloOrdenLocal.push((platillo))
             localStorage.setItem('ordenLocal',arregloOrdenLocal);
         }
-
-
     }
 
+
+    
     return (
 
         
