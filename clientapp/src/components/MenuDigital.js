@@ -52,7 +52,9 @@ function MenuDigital() {
  useEffect(() => {
   obtenerUnRestaurante(restaurante);
   obtenerMenus(restaurante);
-  obtenerSesionGeneral(mesa[0]._id);
+  console.log("ën el useeffect"+localStorage.getItem('sesiongenerallocal'))
+  var sesiongenerallocal = localStorage.getItem('sesiongenerallocal')
+  obtenerSesionGeneral(sesiongenerallocal.toString());
   
 }, []);
 
@@ -62,15 +64,20 @@ const seleccionarMenu = menu => {
   guardarMenuEscogido(menu.nombre);
 }
 
-if(sesiongeneralmesa[0]){
-  //console.log(sesiongeneralmesa)
-  //console.log("no habia sesionGeneral")
-  sesionIndividualAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
-  sesionIndividualAux.restaurante =  restaurantes._id
-  //sesionIndividualAux.sesionGeneral =  sesionindividualsesiongeneral[0]._id
-
-  console.log(sesionIndividualAux)
-  agregarSesionIndividual(sesionIndividualAux)
+if(sesiongeneralmesa.length === 1){
+  if(!localStorage.getItem('sesionindividuallocal')){
+    console.log("äqui ando"+sesiongeneralmesa)
+    //console.log("no habia sesionGeneral")
+    sesionIndividualAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
+    sesionIndividualAux.restaurante =  restaurantes._id
+    sesionIndividualAux.sesionGeneral =  sesiongeneralmesa[0]._id
+  
+    console.log(sesionIndividualAux)
+    localStorage.setItem('sesionindividuallocal', sesionIndividualAux.sesionGeneral);
+  
+    agregarSesionIndividual(sesionIndividualAux)
+  }
+  
 }
 
 
