@@ -53,7 +53,7 @@ function Welcome() {
     obtenerSesionGeneral(sesionGeneralAux.mesa)
     
     
-}, []); //para que corra solo una vez
+}, [sesiongeneralmesa]); //para que corra solo una vez
 
 seleccion.restauranteId = restaurantes._id
 
@@ -75,26 +75,37 @@ const handleChange = e => {
   const revisarFormulario = e =>{
     if(formulario.mesaNombre === ''){
       guardarError(true);
+      return
       
     }
-    else{
-      if(mesa){
-          //console.log("si hubo mesita" + sesionGeneralAux.mesa)
-          //console.log(sesiongeneralmesa)
-          
-          if(!sesiongeneralmesa[0]){
-              //console.log(sesiongeneralmesa)
-              //console.log("no habia sesionGeneral")
-              sesionGeneralAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
-              sesionGeneralAux.restaurante =  restaurantes._id
-              console.log(sesionGeneralAux)
-              agregarSesionGeneral(sesionGeneralAux)
+    if(!localStorage.getItem('sesiongenerallocal')){
+        if(obtenerSesionGeneral(sesionGeneralAux.mesa)){
+            localStorage.setItem('sesiongenerallocal', sesionGeneralAux.mesa);
+        }
+        else{
+            console.log("LOL"+JSON.stringify(sesiongeneralmesa))
+            console.log(sesiongeneralmesa.length)
+            sesionGeneralAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
+            sesionGeneralAux.restaurante =  restaurantes._id
+            console.log(sesionGeneralAux)
+            agregarSesionGeneral(sesionGeneralAux)
+            localStorage.setItem('sesiongenerallocal', sesionGeneralAux.mesa);
+            history.push("/MenuDigital");
+        }
+              
+             
           }
-          history.push("/MenuDigital");
-      }
+    else
+    {
+        history.push("/MenuDigital");
+    }
+    
+          
+          
+      
       
     }
-}
+
 
 
     return (

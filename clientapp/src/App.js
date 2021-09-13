@@ -15,6 +15,7 @@ import PlatillosState from './context/platillos/platillosState';
 import SesionGeneralState from './context/sesionesGenerales/sesionGeneralState';
 import SesionIndividualState from './context/sesionesIndividuales/sesionIndividualState';
 
+// lol
 
 function App() {
    
