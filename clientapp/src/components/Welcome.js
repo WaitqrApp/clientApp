@@ -7,6 +7,8 @@ import Logo from './logo_waitqr.png';
 import restauranteContext from '../context/restaurantes/restauranteContext';
 import mesasContext from '../context/mesas/mesasContext';
 import sesionGeneralContext from '../context/sesionesGenerales/sesionGeneralContext';
+import sesionIndividualContext from '../context/sesionesIndividuales/sesionIndividualContext';
+
 import { useHistory } from "react-router-dom";
 
 function Welcome() {
@@ -20,7 +22,10 @@ function Welcome() {
  const { mesasrestaurante, mesa, obtenerMesas, guardarMesaActual} = mesassContext;
 
  const sesionGeneralsContext = useContext(sesionGeneralContext);
- const { sesiongeneralmesa, obtenerSesionGeneral, agregarSesionGeneral} = sesionGeneralsContext;
+ const {sesiongeneralmesa, obtenerSesionGeneral, agregarSesionGeneral} = sesionGeneralsContext;
+ 
+ const sesionIndividualsContext = useContext(sesionIndividualContext);
+ const { sesionindividualsesiongeneral, obtenerSesionIndividual, agregarSesionIndividual} = sesionIndividualsContext;
 
  const[error, guardarError] = useState(false)
 
@@ -37,6 +42,8 @@ function Welcome() {
      restaurante:''
  })
 
+ 
+
  const [formulario, guardarFormulario] = useState({
      mesaNombre : ''
  })
@@ -47,13 +54,21 @@ function Welcome() {
 
  const {restauranteId, mesaId} = seleccion
 
+ const [ sesionIndividualAux, guardarSesionIndividualAux] = useState({
+    
+    horarioInicio: '',
+    sesionGeneral: '',
+    restaurante:''
+})
+
+
  useEffect(() => {
     obtenerUnRestaurante("5fd817645515ba5728db0adc");
     obtenerMesas("5fd817645515ba5728db0adc");
     obtenerSesionGeneral(sesionGeneralAux.mesa)
+
     
-    
-}, [sesiongeneralmesa]); //para que corra solo una vez
+}, []); //para que corra solo una vez
 
 seleccion.restauranteId = restaurantes._id
 
@@ -73,23 +88,27 @@ const handleChange = e => {
   };
 
   const revisarFormulario = e =>{
+      console.log("presione el boton")
     if(formulario.mesaNombre === ''){
       guardarError(true);
       return
       
     }
-    if(!localStorage.getItem('sesiongenerallocal')){
-        if(obtenerSesionGeneral(sesionGeneralAux.mesa)){
+    if(!localStorage.getItem('sesiongenerallocal')){ //si no hay sesiongenerallocal
+        if(sesiongeneralmesa.length>0){
+          
             localStorage.setItem('sesiongenerallocal', sesionGeneralAux.mesa);
+            //localStorage.setItem('sesiongeneralid', sesiongeneralmesa[0]._id);
+
+            history.push("/MenuDigital");
         }
         else{
-            console.log("LOL"+JSON.stringify(sesiongeneralmesa))
-            console.log(sesiongeneralmesa.length)
             sesionGeneralAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
             sesionGeneralAux.restaurante =  restaurantes._id
-            console.log(sesionGeneralAux)
             agregarSesionGeneral(sesionGeneralAux)
             localStorage.setItem('sesiongenerallocal', sesionGeneralAux.mesa);
+           
+
             history.push("/MenuDigital");
         }
               

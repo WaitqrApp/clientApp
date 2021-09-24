@@ -50,13 +50,11 @@ function MenuDigital() {
   })
 
  useEffect(() => {
-  obtenerUnRestaurante(restaurante);
-  obtenerMenus(restaurante);
-  console.log("ën el useeffect"+localStorage.getItem('sesiongenerallocal'))
-  var sesiongenerallocal = localStorage.getItem('sesiongenerallocal')
-  obtenerSesionGeneral(sesiongenerallocal.toString());
   
-}, []);
+  obtenerSesionGeneral(mesa[0]._id)
+
+  
+},[]);
 
 //Funcion para agregar el menu actual
 const seleccionarMenu = menu => {
@@ -64,25 +62,33 @@ const seleccionarMenu = menu => {
   guardarMenuEscogido(menu.nombre);
 }
 
-if(sesiongeneralmesa.length === 1){
+
+
+if(sesiongeneralmesa.length>0){
   if(!localStorage.getItem('sesionindividuallocal')){
-    console.log("äqui ando"+sesiongeneralmesa)
-    //console.log("no habia sesionGeneral")
+
     sesionIndividualAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
     sesionIndividualAux.restaurante =  restaurantes._id
+    console.log(sesiongeneralmesa)
+
     sesionIndividualAux.sesionGeneral =  sesiongeneralmesa[0]._id
   
-    console.log(sesionIndividualAux)
+    console.log(JSON.stringify(sesionIndividualAux.sesionGeneral))
     localStorage.setItem('sesionindividuallocal', sesionIndividualAux.sesionGeneral);
   
     agregarSesionIndividual(sesionIndividualAux)
+    
+    console.log(localStorage.getItem('sesionindividuallocal'))
+  
   }
   
 }
 
 
 
+
   return (
+    
     <div className="menu-principal">
       <h1>{restaurantes.nombre}</h1>
       <p>{mesa[0].numero}</p>
@@ -156,6 +162,9 @@ if(sesiongeneralmesa.length === 1){
       
     </div>
   );
+
+
+
 }
 
 export default MenuDigital;
