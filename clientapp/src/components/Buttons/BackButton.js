@@ -10,7 +10,7 @@ function BackButton() {
 
     return (
         <Container>
-            <Button className="boton-back" onClick={() => history.goBack()}><ArrowBackIcon/></Button>
+            <Button className="boton-back" onClick={() =>history.push("/MenuDigital")}><ArrowBackIcon/></Button>
         </Container>
     );
 }

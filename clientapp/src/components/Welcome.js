@@ -97,7 +97,7 @@ const handleChange = e => {
     if(!localStorage.getItem('sesiongenerallocal')){ //si no hay sesiongenerallocal
         if(sesiongeneralmesa.length>0){
           
-            localStorage.setItem('sesiongenerallocal', sesionGeneralAux.mesa);
+            localStorage.setItem('mesalocal', sesionGeneralAux.mesa);
             //localStorage.setItem('sesiongeneralid', sesiongeneralmesa[0]._id);
             sesiongeneralmesa.length = 0;
             obtenerSesionGeneral(sesionGeneralAux.mesa)
@@ -108,7 +108,7 @@ const handleChange = e => {
             sesionGeneralAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
             sesionGeneralAux.restaurante =  restaurantes._id
             agregarSesionGeneral(sesionGeneralAux)
-            localStorage.setItem('sesiongenerallocal', sesionGeneralAux.mesa);
+            localStorage.setItem('mesalocal', sesionGeneralAux.mesa);
             sesiongeneralmesa.length = 0;
             obtenerSesionGeneral(sesionGeneralAux.mesa)
             console.log("ya la mande a cero "+ sesiongeneralmesa.length )

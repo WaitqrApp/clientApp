@@ -3,34 +3,121 @@ import { Card, Col, Row, Button, Form, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Picaña from './Menu/picana-t.jpg';
 import BackButton from './Buttons/BackButton';
+import { useHistory } from "react-router-dom";
+
 
 import './styles.css'
 
 import platillosContext from '../context/platillos/platillosContext';
+import ordenContext from '../context/ordenes/ordenContext';
+import restauranteContext from '../context/restaurantes/restauranteContext';
+import mesasContext from '../context/mesas/mesasContext';
+import platilloOrdenadoContext from '../context/platillosOrdenados/platilloOrdenadoContext';
+
+
 
 function DetallePlatillo() {
+
+    let history = useHistory();
 
 
     const platillossContext = useContext(platillosContext);
     const { platillosseccion, platillo, obtenerPlatillos, guardarPlatilloActual } = platillossContext;
-    console.log("llego este platillo" + platillo.nombre)
+
+    const ordensContext = useContext(ordenContext);
+    const {  ordensesionindividual, obtenerOrdenSesionIndividual, agregarOrden} = ordensContext;
+    const  platillosOrdenadossContext = useContext(platilloOrdenadoContext);
+    const { agregarPlatilloOrdenado} = platillosOrdenadossContext;
+
+    const mesassContext = useContext(mesasContext);
+    const {  mesa} = mesassContext;
+    const restaurantesContext = useContext(restauranteContext);
+ const { restaurante} = restaurantesContext;
+
+    const [platilloPedido, guardarPlatilloPedido] = useState({
+        cantidad: "1",
+        descripcion: ""
+
+    })
+
+    const {cantidad, descripcion} = platilloPedido;
+
+    const [ ordenAux, guardarOrdenAux] = useState({
+
+        sesionIndividual: '',
+        sesionGeneral: '',
+        restaurante:'',
+        mesa:'',
+
+    });
+    const [ platilloOrdenadoAux, guardarPlatilloOrdenadoAux] = useState({
+
+        nombre: '',
+        precio: '',
+        cantidad:'',
+        comentario:'',
+        platilloId:'',
+        orden:'',
+        restaurante:'',
+        sesionIndividual:'',
+        sesionGeneral:'',
+        mesa:'',
+
+    });
+   
+
+    useEffect(() => {
+        if(!localStorage.getItem('ordenid')){
+            ordenAux.sesionIndividual=localStorage.getItem('sesionindividualid');
+            ordenAux.sesionGeneral=localStorage.getItem('sesiongeneralid');
+            ordenAux.restaurante = localStorage.getItem('restaurantelocal');;
+            ordenAux.mesa= localStorage.getItem('mesalocal');
+            agregarOrden(ordenAux)
+            
+         }
+        
+      },[]);
+
+     
+
+
+    const handleChange = e => {
+        guardarPlatilloPedido({
+            ...platilloPedido,
+            [e.target.name]: e.target.value
+          })
+      };
+
+
+   // console.log("llego este platillo" + platillo.nombre)
+
+   const crearPlatilloOrdenado = e =>{
+    platilloOrdenadoAux.nombre = platillo.nombre;
+    platilloOrdenadoAux.precio = platillo.precio;
+    platilloOrdenadoAux.cantidad = cantidad;
+    platilloOrdenadoAux.comentario = descripcion;
+    platilloOrdenadoAux.platilloId = platillo._id;
+    platilloOrdenadoAux.orden = localStorage.getItem('ordenid');
+    platilloOrdenadoAux.restaurante = localStorage.getItem('restaurantelocal');
+    platilloOrdenadoAux.sesionIndividual = localStorage.getItem('sesionindividualid');
+    platilloOrdenadoAux.sesionGeneral = localStorage.getItem('sesiongeneralid');
+    platilloOrdenadoAux.mesa = localStorage.getItem('mesalocal');
+    agregarPlatilloOrdenado(platilloOrdenadoAux)
+    history.push("/MenuDigital")
+   }
     
-    var arregloOrdenLocal = []
-    const guardarPlatilloEnOrdenLocal = platillo =>{
-        var aux = JSON.parse(localStorage.getItem('ordenLocal'))
-        if(aux){
-            console.log(aux)
-            var ordenLocal = localStorage.getItem('ordenLocal')
-            ordenLocal.push(platillo)
-            localStorage.setItem('ordenLocal',ordenLocal);
 
+    const guardarPlatilloEnOrdenLocal = e => {
+
+        
+         crearPlatilloOrdenado();
+
+           
+         
+
+     
 
         }
-        else{
-            arregloOrdenLocal.push((platillo))
-            localStorage.setItem('ordenLocal',arregloOrdenLocal);
-        }
-    }
 
 
     
@@ -60,10 +147,15 @@ function DetallePlatillo() {
                 </Col>
             </Row>
             <Row>
-                <Form className="form-cantidad">
+                <Form className="form-cantidad" 
+                 
+                >
                     <Form.Group className="input-cantidad mt-3 ml-4">
                             <Form.Label>Cantidad</Form.Label>
-                            <Form.Control className="input-cantidad" as="select">
+                            <Form.Control className="input-cantidad" as="select"
+                             name="cantidad"
+                             value={cantidad}
+                             onChange={handleChange}>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -76,7 +168,10 @@ function DetallePlatillo() {
             <Row>
                 <Form>
                     <Form.Group className="input-notas ml-4">
-                        <textarea className="input-notas-texto form-control" rows="3" placeholder="Notas para la cocina"></textarea>
+                        <textarea className="input-notas-texto form-control" rows="3" placeholder="Notas para la cocina"
+                        name="descripcion"
+                        value={descripcion}
+                        onChange={handleChange}></textarea>
                         
                     </Form.Group>
                 </Form>
@@ -85,7 +180,7 @@ function DetallePlatillo() {
                 
                 <Col className="boton-ordenar">
                    {/* <Link to={'/Orden'}> */}
-                        <Button className="confirmar" onClick={() => guardarPlatilloEnOrdenLocal(platillo)}>Agregar</Button>
+                        <Button className="confirmar" onClick={() => guardarPlatilloEnOrdenLocal()}>Agregar</Button>
                      {/*</Link>*/}
                 </Col>
             </Row>

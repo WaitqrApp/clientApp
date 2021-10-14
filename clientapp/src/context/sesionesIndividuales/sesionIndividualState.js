@@ -48,6 +48,8 @@ const SesionIndividualState = props =>{
         try {
             const resultado = await clienteAxios.post('/api/sesionesindividuales', sesionindividual);
             console.log(resultado)
+            localStorage.setItem('sesionindividualid',resultado.data.sesionIndividual._id);
+
             dispatch({
                 type: AGREGAR_SESIONINDIVIDUAL,
                 payload: sesionindividual

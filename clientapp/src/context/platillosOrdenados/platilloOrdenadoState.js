@@ -46,7 +46,7 @@ const PlatilloOrdenadoState = props =>{
     const agregarPlatilloOrdenado = async  platilloordenado =>{
        // tarea.id = uuid.v4();
         try {
-            const resultado = await clienteAxios.post('/api/platillosordenados', platilloordenado);
+            const resultado = await clienteAxios.post('/api/platilloOrdenado', platilloordenado);
             console.log(resultado)
             dispatch({
                 type: AGREGAR_PLATILLOORDENADO,

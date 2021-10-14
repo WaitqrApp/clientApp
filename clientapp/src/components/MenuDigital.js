@@ -39,6 +39,8 @@ function MenuDigital() {
     const sesionIndividualsContext = useContext(sesionIndividualContext);
     const { sesionindividualsesiongeneral, obtenerSesionIndividual, agregarSesionIndividual} = sesionIndividualsContext;
 
+  
+
 
     const [menuEscogido, guardarMenuEscogido] = useState('');
 
@@ -56,7 +58,7 @@ function MenuDigital() {
   
   
 },[]);
-
+localStorage.setItem('restaurantelocal', restaurante);
 console.log(sesiongeneralmesa)
 
 
@@ -72,7 +74,7 @@ const seleccionarMenu = menu => {
 
  
   if(sesiongeneralmesa.length>0){
-    if(!localStorage.getItem('sesionindividuallocal')){
+    if(!localStorage.getItem('sesionindividualid')){
   
       sesionIndividualAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
       sesionIndividualAux.restaurante =  restaurantes._id
@@ -81,11 +83,12 @@ const seleccionarMenu = menu => {
       sesionIndividualAux.sesionGeneral =  sesiongeneralmesa[0]._id
     
       console.log(JSON.stringify(sesionIndividualAux.sesionGeneral))
-      localStorage.setItem('sesionindividuallocal', sesionIndividualAux.sesionGeneral);
+     
     
       agregarSesionIndividual(sesionIndividualAux)
       
-      console.log(localStorage.getItem('sesionindividuallocal'))
+      
+      
     
     }
   }
@@ -149,7 +152,8 @@ const seleccionarMenu = menu => {
                 <DropdownButton
                 >
                 <Dropdown.Item>Selecciona un menu</Dropdown.Item>
-                {menusrestaurante.map(menu => (
+                {
+                menusrestaurante.map(menu => (
                                 <Dropdown.Item
                                 onClick={() => seleccionarMenu(menu)}
                                 >{menu.nombre}</Dropdown.Item>
