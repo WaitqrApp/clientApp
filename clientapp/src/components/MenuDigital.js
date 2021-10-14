@@ -51,38 +51,49 @@ function MenuDigital() {
 
  useEffect(() => {
   
-  obtenerSesionGeneral(mesa[0]._id)
-
+  obtenerMenus(restaurante)
+  obtenerSesionGeneral(mesa[0]._id);
+  
   
 },[]);
+
+console.log(sesiongeneralmesa)
+
+
+
+
+
 
 //Funcion para agregar el menu actual
 const seleccionarMenu = menu => {
   guardarMenuActual(menu._id); //fijar un menu actual
   guardarMenuEscogido(menu.nombre);
-}
+  console.log(sesiongeneralmesa)
 
-
-
-if(sesiongeneralmesa.length>0){
-  if(!localStorage.getItem('sesionindividuallocal')){
-
-    sesionIndividualAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
-    sesionIndividualAux.restaurante =  restaurantes._id
-    console.log(sesiongeneralmesa)
-
-    sesionIndividualAux.sesionGeneral =  sesiongeneralmesa[0]._id
+ 
+  if(sesiongeneralmesa.length>0){
+    if(!localStorage.getItem('sesionindividuallocal')){
   
-    console.log(JSON.stringify(sesionIndividualAux.sesionGeneral))
-    localStorage.setItem('sesionindividuallocal', sesionIndividualAux.sesionGeneral);
+      sesionIndividualAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
+      sesionIndividualAux.restaurante =  restaurantes._id
+      console.log(sesiongeneralmesa)
   
-    agregarSesionIndividual(sesionIndividualAux)
+      sesionIndividualAux.sesionGeneral =  sesiongeneralmesa[0]._id
     
-    console.log(localStorage.getItem('sesionindividuallocal'))
-  
+      console.log(JSON.stringify(sesionIndividualAux.sesionGeneral))
+      localStorage.setItem('sesionindividuallocal', sesionIndividualAux.sesionGeneral);
+    
+      agregarSesionIndividual(sesionIndividualAux)
+      
+      console.log(localStorage.getItem('sesionindividuallocal'))
+    
+    }
   }
-  
 }
+
+
+
+
 
 
 

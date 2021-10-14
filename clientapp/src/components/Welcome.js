@@ -99,7 +99,9 @@ const handleChange = e => {
           
             localStorage.setItem('sesiongenerallocal', sesionGeneralAux.mesa);
             //localStorage.setItem('sesiongeneralid', sesiongeneralmesa[0]._id);
-
+            sesiongeneralmesa.length = 0;
+            obtenerSesionGeneral(sesionGeneralAux.mesa)
+            console.log("ya la mande a cero "+ sesiongeneralmesa.length )
             history.push("/MenuDigital");
         }
         else{
@@ -107,7 +109,9 @@ const handleChange = e => {
             sesionGeneralAux.restaurante =  restaurantes._id
             agregarSesionGeneral(sesionGeneralAux)
             localStorage.setItem('sesiongenerallocal', sesionGeneralAux.mesa);
-           
+            sesiongeneralmesa.length = 0;
+            obtenerSesionGeneral(sesionGeneralAux.mesa)
+            console.log("ya la mande a cero "+ sesiongeneralmesa.length )
 
             history.push("/MenuDigital");
         }
