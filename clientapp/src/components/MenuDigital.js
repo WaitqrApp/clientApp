@@ -39,6 +39,8 @@ function MenuDigital() {
     const sesionIndividualsContext = useContext(sesionIndividualContext);
     const { sesionindividualsesiongeneral, obtenerSesionIndividual, agregarSesionIndividual} = sesionIndividualsContext;
 
+  
+
 
     const [menuEscogido, guardarMenuEscogido] = useState('');
 
@@ -50,39 +52,57 @@ function MenuDigital() {
   })
 
  useEffect(() => {
-  obtenerUnRestaurante(restaurante);
-  obtenerMenus(restaurante);
-  console.log("ën el useeffect"+localStorage.getItem('sesiongenerallocal'))
-  var sesiongenerallocal = localStorage.getItem('sesiongenerallocal')
-  obtenerSesionGeneral(sesiongenerallocal.toString());
   
-}, []);
+  obtenerMenus(restaurante)
+  obtenerSesionGeneral(mesa[0]._id);
+  
+  
+},[]);
+localStorage.setItem('restaurantelocal', restaurante);
+console.log(sesiongeneralmesa)
+
+
+
+
+
 
 //Funcion para agregar el menu actual
 const seleccionarMenu = menu => {
   guardarMenuActual(menu._id); //fijar un menu actual
   guardarMenuEscogido(menu.nombre);
+  console.log(sesiongeneralmesa)
+
+ 
+  if(sesiongeneralmesa.length>0){
+    if(!localStorage.getItem('sesionindividualid')){
+  
+      sesionIndividualAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
+      sesionIndividualAux.restaurante =  restaurantes._id
+      console.log(sesiongeneralmesa)
+  
+      sesionIndividualAux.sesionGeneral =  sesiongeneralmesa[0]._id
+    
+      console.log(JSON.stringify(sesionIndividualAux.sesionGeneral))
+     
+    
+      agregarSesionIndividual(sesionIndividualAux)
+      
+      
+      
+    
+    }
+  }
 }
 
-if(sesiongeneralmesa.length === 1){
-  if(!localStorage.getItem('sesionindividuallocal')){
-    console.log("äqui ando"+sesiongeneralmesa)
-    //console.log("no habia sesionGeneral")
-    sesionIndividualAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
-    sesionIndividualAux.restaurante =  restaurantes._id
-    sesionIndividualAux.sesionGeneral =  sesiongeneralmesa[0]._id
-  
-    console.log(sesionIndividualAux)
-    localStorage.setItem('sesionindividuallocal', sesionIndividualAux.sesionGeneral);
-  
-    agregarSesionIndividual(sesionIndividualAux)
-  }
-  
-}
+
+
+
+
 
 
 
   return (
+    
     <div className="menu-principal">
       <h1>{restaurantes.nombre}</h1>
       <p>{mesa[0].numero}</p>
@@ -132,7 +152,8 @@ if(sesiongeneralmesa.length === 1){
                 <DropdownButton
                 >
                 <Dropdown.Item>Selecciona un menu</Dropdown.Item>
-                {menusrestaurante.map(menu => (
+                {
+                menusrestaurante.map(menu => (
                                 <Dropdown.Item
                                 onClick={() => seleccionarMenu(menu)}
                                 >{menu.nombre}</Dropdown.Item>
@@ -156,6 +177,9 @@ if(sesiongeneralmesa.length === 1){
       
     </div>
   );
+
+
+
 }
 
 export default MenuDigital;

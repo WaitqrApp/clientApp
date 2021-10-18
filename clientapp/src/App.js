@@ -14,6 +14,9 @@ import SeccionState from './context/secciones/seccionesState';
 import PlatillosState from './context/platillos/platillosState';
 import SesionGeneralState from './context/sesionesGenerales/sesionGeneralState';
 import SesionIndividualState from './context/sesionesIndividuales/sesionIndividualState';
+import OrdenState from './context/ordenes/ordenState';
+import PlatilloOrdenadoState from './context/platillosOrdenados/platilloOrdenadoState';
+
 
 // lol
 
@@ -29,6 +32,8 @@ function App() {
             <PlatillosState>
               <SesionGeneralState>
                 <SesionIndividualState>
+                  <OrdenState>
+                    <PlatilloOrdenadoState>
                
         <Router>
           <Switch>
@@ -39,6 +44,8 @@ function App() {
             <Route exact path="/Estatus" component={Estatus} />
           </Switch>
         </Router>
+       </PlatilloOrdenadoState>
+        </OrdenState>
         </SesionIndividualState>
         </SesionGeneralState>
         </PlatillosState>

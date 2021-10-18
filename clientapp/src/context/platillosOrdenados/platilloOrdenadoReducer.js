@@ -34,7 +34,8 @@ export default (state, action) => {
         case ACTUALIZAR_PLATILLOORDENADO:
             return{
                 ...state,
-                platilloOrdenadoOrden: state.platilloOrdenadoOrden.map(platilloOrdenado => platilloOrdenado._id === action.payload._id 
+                platilloOrdenadoOrden: state.platilloOrdenadoOrden.map(platilloOrdenado =>
+                    console.log(platilloOrdenado)
                     ? action.payload
                     : platilloOrdenado)
             }

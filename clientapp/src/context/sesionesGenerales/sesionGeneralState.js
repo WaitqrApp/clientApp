@@ -48,6 +48,7 @@ const SesionGeneralState = props =>{
         try {
             const resultado = await clienteAxios.post('/api/sesionesgenerales', sesiongeneral);
             console.log(resultado)
+            localStorage.setItem('sesiongeneralid',resultado.data.sesionGeneral._id);
             dispatch({
                 type: AGREGAR_SESIONGENERAL,
                 payload: sesiongeneral

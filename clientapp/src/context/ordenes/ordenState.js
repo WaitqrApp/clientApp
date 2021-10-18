@@ -33,7 +33,7 @@ const OrdenState = props =>{
 
     const obtenerOrdenSesionIndividual = async sesionindividual =>{
         try {
-            const resultado = await clienteAxios.get('/api/orden/sesionIndividual',{params:{sesionindividual}});
+            const resultado = await clienteAxios.get('/api/ordenes/sesionIndividual',{params:{sesionindividual}});
             console.log(resultado)
             dispatch({
                 type: ORDEN_SESIONINDIVIDUAL,
@@ -45,7 +45,7 @@ const OrdenState = props =>{
     }
     const obtenerOrdenRestaurante = async restaurante =>{
         try {
-            const resultado = await clienteAxios.get('/api/orden/restaurante',{params:{restaurante}});
+            const resultado = await clienteAxios.get('/api/ordenes/restaurante',{params:{restaurante}});
             console.log(resultado)
             dispatch({
                 type: ORDEN_RESTAURANTE,
@@ -62,6 +62,7 @@ const OrdenState = props =>{
         try {
             const resultado = await clienteAxios.post('/api/ordenes', orden);
             console.log(resultado)
+            localStorage.setItem('ordenid',resultado.data.orden._id);
             dispatch({
                 type: AGREGAR_ORDEN,
                 payload: orden

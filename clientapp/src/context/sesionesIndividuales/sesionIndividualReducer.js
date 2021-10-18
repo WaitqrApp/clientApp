@@ -16,6 +16,7 @@ export default (state, action) => {
                 sesionindividualsesiongeneral:action.payload
             }
         case AGREGAR_SESIONINDIVIDUAL:
+
             return{
                 ...state,
                 sesionindividualsesiongeneral: [...state.sesionindividualsesiongeneral, action.payload],
