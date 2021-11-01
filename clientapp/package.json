@@ -2,7 +2,8 @@
   "name": "lientapp",
   "version": "1.0.0",
   "description": "",
-  "main": "src/ndex.js",
+  "type": "module",
+  "main": "src/index.js",
   "engines": {
     "node": "14.x"
   },
