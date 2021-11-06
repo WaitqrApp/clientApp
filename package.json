@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "node .", 
+    "heroku-prebuild": "npm install -f",
+    "heroku-postbuild": "npm run production",
     "dev": "nodemon ."
   },
   "author": "",
