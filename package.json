@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "Servidor/index.js",
+  "engines": {
+    "node": "12.18.4"
+    },
   "scripts": {
     "start": "node .", 
     "heroku-prebuild": "npm install -f",
