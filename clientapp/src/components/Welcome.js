@@ -65,7 +65,7 @@ function Welcome() {
  useEffect(() => {
     obtenerUnRestaurante("5fd817645515ba5728db0adc");
     obtenerMesas("5fd817645515ba5728db0adc");
-    obtenerSesionGeneral(sesionGeneralAux.mesa)
+    obtenerSesionGeneral(localStorage.getItem('mesalocal'))
 
     
 }, []); //para que corra solo una vez
@@ -84,7 +84,8 @@ const handleChange = e => {
     sesionGeneralAux.mesa = obj._id
     guardarRestauranteActual("5fd817645515ba5728db0adc")
     console.log(mesa)
-    
+    localStorage.setItem('mesalocal', sesionGeneralAux.mesa);
+    obtenerSesionGeneral(localStorage.getItem('mesalocal'))
   };
 
   const revisarFormulario = e =>{
@@ -95,21 +96,25 @@ const handleChange = e => {
       
     }
     if(!localStorage.getItem('sesiongenerallocal')){ //si no hay sesiongenerallocal
+       
+        console.log("este es el length"+sesiongeneralmesa.length)
+        console.log("esto es lo que trae"+JSON.stringify(sesiongeneralmesa))
         if(sesiongeneralmesa.length>0){
           
-            localStorage.setItem('mesalocal', sesionGeneralAux.mesa);
-            //localStorage.setItem('sesiongeneralid', sesiongeneralmesa[0]._id);
-            sesiongeneralmesa.length = 0;
+            console.log("entre en if")
+            localStorage.setItem('sesiongeneralid', sesiongeneralmesa[0]._id);
+            //sesiongeneralmesa.length = 0;
             obtenerSesionGeneral(sesionGeneralAux.mesa)
             console.log("ya la mande a cero "+ sesiongeneralmesa.length )
             history.push("/MenuDigital");
         }
         else{
+            console.log("entre en else")
             sesionGeneralAux.horarioInicio = new Date().toLocaleString("en-GB", {timeZone: 'America/Mexico_City'})
             sesionGeneralAux.restaurante =  restaurantes._id
             agregarSesionGeneral(sesionGeneralAux)
-            localStorage.setItem('mesalocal', sesionGeneralAux.mesa);
-            sesiongeneralmesa.length = 0;
+            //localStorage.setItem('mesalocal', sesionGeneralAux.mesa);
+            //sesiongeneralmesa.length = 0;
             obtenerSesionGeneral(sesionGeneralAux.mesa)
             console.log("ya la mande a cero "+ sesiongeneralmesa.length )
 
