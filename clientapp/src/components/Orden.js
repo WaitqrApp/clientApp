@@ -15,7 +15,7 @@ import platilloOrdenadoContext from '../context/platillosOrdenados/platilloOrden
 function Orden() {
 
     const  platillosOrdenadossContext = useContext(platilloOrdenadoContext);
-    const { platilloOrdenadoOrden, obtenerPlatilloOrdenado, actualizarPlatilloOrdenado} = platillosOrdenadossContext;
+    const { platilloOrdenadoOrden, obtenerPlatilloOrdenado, actualizarPlatilloOrdenado, eliminarPlatilloOrdenado} = platillosOrdenadossContext;
 
     useEffect(() => {
         obtenerPlatilloOrdenado(localStorage.getItem('ordenid'))
@@ -37,6 +37,9 @@ function Orden() {
     const decreaseCount= platillo => {
         platillo.cantidad = platillo.cantidad-1;
         actualizarPlatilloOrdenado(platillo)
+        if(platillo.cantidad === 0){
+            eliminarPlatilloOrdenado(platillo._id)
+        }
     }
 
     var total = 0
