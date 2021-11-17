@@ -47,6 +47,17 @@ function Orden() {
         total = (platillo.precio * platillo.cantidad) + total
     ))
 
+    const confirmarOrden = e =>{
+        platilloOrdenadoOrden.map((platillo) => (
+            platillo.ordenado = true,
+            actualizarPlatilloOrdenado(platillo)
+        ))
+        history.push("/estatus");
+       
+
+        
+    }
+
 
     return (
         <Container fluid className="orden">
@@ -69,14 +80,29 @@ function Orden() {
             </Row>
             <Row className="platillos">
                 <Col>
-                {
-                platilloOrdenadoOrden.map(platillo => (
-                    <Card className="platillo-orden mb-2">
-                    <Card.Text className="mr-4 ml-1 mt-3 mb-n2">{platillo.nombre}</Card.Text>
-                    <Card.Text className="ml-4 mt-3">${platillo.precio}</Card.Text>
-                    <IndeterminateCheckBoxIcon onClick={() =>decreaseCount(platillo)} className="menos mt-3"/>
+                {platilloOrdenadoOrden.map((platillo) => (
+            <Card className="platillo-orden mb-2">
+              <Card.Text className="mr-4 ml-1 mt-3 mb-n2">
+                {platillo.nombre}
+              </Card.Text>
+              <Card.Text className="ml-4 mt-3">${platillo.precio}</Card.Text>
+              {platillo.ordenado == false ? (
+                <IndeterminateCheckBoxIcon
+                  onClick={() => decreaseCount(platillo)}
+                  className="menos mt-3"
+                />
+              ) : (
+                <span></span>
+              )}
                     <Card.Text className="platillo-orden-cantidad mt-3">{parseInt(platillo.cantidad,10)}</Card.Text>
-                    <AddBoxIcon  onClick={() => increaseCount(platillo)} className="mas mt-3"/>
+                    {platillo.ordenado == false ? (
+                <AddBoxIcon
+                  onClick={() => increaseCount(platillo)}
+                  className="mas mt-3"
+                />
+              ) : (
+                <span></span>
+              )}
                 </Card>
                                 ))}    
                     
@@ -93,9 +119,9 @@ function Orden() {
             </Row>
             <Row>
                 <Col className="boton-ordenar">
-                    <Link to={'/estatus'}>
-                        <Button className="confirmar" variant="primary">Confirmar</Button>
-                    </Link>
+                    
+                        <Button className="confirmar" variant="primary"  onClick={() => confirmarOrden()}>Confirmar</Button>
+                    
                 </Col>
             </Row>
         </Container>
