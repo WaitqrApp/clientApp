@@ -71,15 +71,6 @@ function MenuDigital() {
   useEffect(() => {
     obtenerMenus(restaurante);
     obtenerSesionGeneral(mesa[0]._id);
-  }, []);
-  localStorage.setItem("restaurantelocal", restaurante);
-  console.log(sesiongeneralmesa);
-
-  //Funcion para agregar el menu actual
-  const seleccionarMenu = (menu) => {
-    guardarMenuActual(menu._id); //fijar un menu actual
-    guardarMenuEscogido(menu.nombre);
-    console.log(sesiongeneralmesa);
 
     if (sesiongeneralmesa.length > 0) {
       if (!localStorage.getItem("sesionindividualid")) {
@@ -96,8 +87,19 @@ function MenuDigital() {
         agregarSesionIndividual(sesionIndividualAux);
       }
     }
-  };
+  }, []);
+  localStorage.setItem("restaurantelocal", restaurante);
+  console.log(sesiongeneralmesa);
+/*
+  //Funcion para agregar el menu actual
+  const seleccionarMenu = (menu) => {
+    guardarMenuActual(menu._id); //fijar un menu actual
+    guardarMenuEscogido(menu.nombre);
+    console.log(sesiongeneralmesa);
 
+   
+  };
+*/
   return (
     <div className="menu-principal">
       <h1>{restaurantes.nombre}</h1>
@@ -143,23 +145,13 @@ function MenuDigital() {
         </Link>
       </Card>
 
-      <Form>
-        <Row>
-          <Col className="mesa">
-            <DropdownButton>
-              <Dropdown.Item>Selecciona un menu</Dropdown.Item>
-              {menusrestaurante
-                .filter((menu) => menu.disponible)
-                .map((menu) => (
-                  <Dropdown.Item onClick={() => seleccionarMenu(menu)}>
-                    {menu.nombre}
-                  </Dropdown.Item>
+    
+      {menusrestaurante
+                .filter((menu) => menu.disponible == true)
+                .map((menudisponible) => (
+                  menudisponible ? <Menu menudisponible={menudisponible} /> : <p>No hay menu dispnible</p>
                 ))}
-            </DropdownButton>
-          </Col>
-        </Row>
-      </Form>
-      {menuEscogido ? <Menu menu={menu} /> : <p>Escoge un menu</p>}
+    
     </div>
   );
 }
