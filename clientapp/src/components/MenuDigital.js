@@ -71,6 +71,8 @@ function MenuDigital() {
   useEffect(() => {
     obtenerMenus(restaurante);
     obtenerSesionGeneral(mesa[0]._id);
+    localStorage.setItem('mesaNombre', mesa[0].numero);
+
 
     if (sesiongeneralmesa.length > 0) {
       if (!localStorage.getItem("sesionindividualid")) {
