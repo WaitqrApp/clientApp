@@ -1,82 +1,86 @@
-import React, { useState, useContext, useEffect } from "react";
-import {
-  Card,
-  Col,
-  Row,
-  Badge,
-  Button,
-  Form,
-  Container,
-} from "react-bootstrap";
+import React, { useState,useContext, useEffect } from "react";
+import { Card, Col, Row, Badge, Button, Form, Container } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import IndeterminateCheckBoxIcon from "@material-ui/icons/IndeterminateCheckBox";
-import AddBoxIcon from "@material-ui/icons/AddBox";
-import "./styles.css";
-import BackButtonOrden from "./Buttons/BackButtonOrden";
+import { Link } from 'react-router-dom'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import './styles.css';
+import BackButtonOrden from './Buttons/BackButtonOrden';
 import { Prev } from "react-bootstrap/esm/PageItem";
 
-import platilloOrdenadoContext from "../context/platillosOrdenados/platilloOrdenadoContext";
+import platilloOrdenadoContext from '../context/platillosOrdenados/platilloOrdenadoContext';
+
 
 function Orden() {
-  const platillosOrdenadossContext = useContext(platilloOrdenadoContext);
-  const {
-    platilloOrdenadoOrden,
-    obtenerPlatilloOrdenado,
-    actualizarPlatilloOrdenado,
-    eliminarPlatilloOrdenado,
-  } = platillosOrdenadossContext;
 
-  useEffect(() => {
-    obtenerPlatilloOrdenado(localStorage.getItem("ordenid"));
-  }, []);
+    const  platillosOrdenadossContext = useContext(platilloOrdenadoContext);
+    const { platilloOrdenadoOrden, obtenerPlatilloOrdenado, actualizarPlatilloOrdenado, eliminarPlatilloOrdenado} = platillosOrdenadossContext;
 
-  console.log(platilloOrdenadoOrden);
+    useEffect(() => {
+        obtenerPlatilloOrdenado(localStorage.getItem('ordenid'))
+           
+        
+      },[]);
 
-  let history = useHistory();
+      console.log(platilloOrdenadoOrden)
 
-  const increaseCount = (platillo) => {
-    platillo.cantidad = platillo.cantidad + 1;
-    actualizarPlatilloOrdenado(platillo);
-    history.push("/Orden");
-  };
+    let history = useHistory();
 
-  const decreaseCount = (platillo) => {
-    platillo.cantidad = platillo.cantidad - 1;
-    actualizarPlatilloOrdenado(platillo);
-    if (platillo.cantidad === 0) {
-      eliminarPlatilloOrdenado(platillo._id);
+
+    const increaseCount= platillo => {
+       platillo.cantidad = platillo.cantidad+1;
+        actualizarPlatilloOrdenado(platillo)
+        history.push("/Orden")
     }
-  };
 
-  var total = 0;
-  platilloOrdenadoOrden.map(
-    (platillo) => (total = platillo.precio * platillo.cantidad + total)
-  );
+    const decreaseCount= platillo => {
+        platillo.cantidad = platillo.cantidad-1;
+        actualizarPlatilloOrdenado(platillo)
+        if(platillo.cantidad === 0){
+            eliminarPlatilloOrdenado(platillo._id)
+        }
+    }
 
-  return (
-    <Container fluid className="orden">
-      <Row>
-        <Col className="">
-          <BackButtonOrden className="boton-back-orden" />
-        </Col>
-        <Col className="titulo-carrito mt-4">
-          <h1>Carrito</h1>
-        </Col>
-        <Col className="mt-4">
-          <ShoppingCartIcon className="carrito" />
-        </Col>
-      </Row>
+    var total = 0
+    platilloOrdenadoOrden.map(platillo => (
+        total = (platillo.precio * platillo.cantidad) + total
+    ))
 
-      <Row>
-        <Col className="mt-4 mb-2">
-          <h3>Entradas</h3>
-        </Col>
-      </Row>
-      <Row className="platillos">
-        <Col>
-          {platilloOrdenadoOrden.map((platillo) => (
+    const confirmarOrden = e =>{
+        platilloOrdenadoOrden.map((platillo) => (
+            platillo.ordenado = true,
+            actualizarPlatilloOrdenado(platillo)
+        ))
+        history.push("/estatus");
+       
+
+        
+    }
+
+
+    return (
+        <Container fluid className="orden">
+            <Row>
+                <Col className="" >
+                    <BackButtonOrden className="boton-back-orden"/>
+                </Col>
+                <Col className="titulo-carrito mt-4" >
+                    <h1>Carrito</h1>
+                </Col>
+                <Col className="mt-4" >
+                    <ShoppingCartIcon className="carrito"/>
+                </Col>
+            </Row>
+            
+            <Row>
+                <Col className="mt-4 mb-2">
+                    <h3>Entradas</h3>
+                </Col>
+            </Row>
+            <Row className="platillos">
+                <Col>
+                {platilloOrdenadoOrden.map((platillo) => (
             <Card className="platillo-orden mb-2">
               <Card.Text className="mr-4 ml-1 mt-3 mb-n2">
                 {platillo.nombre}
@@ -90,10 +94,8 @@ function Orden() {
               ) : (
                 <span></span>
               )}
-              <Card.Text className="platillo-orden-cantidad mt-3">
-                {parseInt(platillo.cantidad, 10)}
-              </Card.Text>
-              {platillo.ordenado == false ? (
+                    <Card.Text className="platillo-orden-cantidad mt-3">{parseInt(platillo.cantidad,10)}</Card.Text>
+                    {platillo.ordenado == false ? (
                 <AddBoxIcon
                   onClick={() => increaseCount(platillo)}
                   className="mas mt-3"
@@ -101,29 +103,29 @@ function Orden() {
               ) : (
                 <span></span>
               )}
-            </Card>
-          ))}
-        </Col>
-      </Row>
-      <Row className="total">
-        <Col className="total-titulo">
-          <h1>Total</h1>
-        </Col>
-        <Col className="total-texto">
-          <h1>${total}</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col className="boton-ordenar">
-          <Link to={"/estatus"}>
-            <Button className="confirmar" variant="primary">
-              Confirmar
-            </Button>
-          </Link>
-        </Col>
-      </Row>
-    </Container>
-  );
+                </Card>
+                                ))}    
+                    
+                    
+                </Col>
+            </Row>
+            <Row className="total">
+                <Col className="total-titulo">
+                    <h1>Total</h1>
+                </Col>
+                <Col className="total-texto">
+                    <h1>${total}</h1>
+                </Col>
+            </Row>
+            <Row>
+                <Col className="boton-ordenar">
+                    
+                        <Button className="confirmar" variant="primary"  onClick={() => confirmarOrden()}>Confirmar</Button>
+                    
+                </Col>
+            </Row>
+        </Container>
+    );
 }
 
 export default Orden;

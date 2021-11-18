@@ -6,7 +6,7 @@ import menusContext from '../context/menus/menusContext';
 import seccionesContext from '../context/secciones/seccionesContext';
 import MenuPlatillo from './MenuPlatillo';
 
-function Menu({menu}){
+function Menu({menudisponible}){
 
     const menussContext = useContext(menusContext);
     const { menusrestaurante, obtenerMenus, guardarMenuActual } = menussContext;
@@ -16,8 +16,9 @@ function Menu({menu}){
   const {seccion,seccionesmenu, obtenerSecciones, guardarSeccionActual} = seccionessContext;
 
   useEffect(() => {
-    obtenerSecciones(menu[0]._id);
-  }, [menu]);
+    console.log("llego este menu"+menudisponible.nombre)
+    obtenerSecciones(menudisponible._id);
+  }, [menudisponible]);
 
   const [seccionSeleccionada, guardarSeccionSeleccionada] = useState({});
 

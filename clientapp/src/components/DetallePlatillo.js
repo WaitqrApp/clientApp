@@ -72,6 +72,7 @@ function DetallePlatillo() {
             ordenAux.sesionGeneral=localStorage.getItem('sesiongeneralid');
             ordenAux.restaurante = localStorage.getItem('restaurantelocal');;
             ordenAux.mesa= localStorage.getItem('mesalocal');
+            ordenAux.mesaNombre= localStorage.getItem('mesaNombre');
             agregarOrden(ordenAux)
             
          }

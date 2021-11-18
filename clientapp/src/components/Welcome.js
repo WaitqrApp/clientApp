@@ -4,6 +4,13 @@ import { Row, Col, Form, Button, Card, Container } from 'react-bootstrap';
 import "./styles.css"
 import Logo from './logo_waitqr.png';
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    useParams
+  } from "react-router-dom";
+
 import restauranteContext from '../context/restaurantes/restauranteContext';
 import mesasContext from '../context/mesas/mesasContext';
 import sesionGeneralContext from '../context/sesionesGenerales/sesionGeneralContext';
@@ -27,7 +34,7 @@ function Welcome() {
  const sesionIndividualsContext = useContext(sesionIndividualContext);
  const { sesionindividualsesiongeneral, obtenerSesionIndividual, agregarSesionIndividual} = sesionIndividualsContext;
 
- const[error, guardarError] = useState(false)
+ const[error, guardarError] = useState("")
 
 
  const [seleccion, guardarSeleccion] = useState({
@@ -61,12 +68,15 @@ function Welcome() {
     restaurante:''
 })
 
+let { restauranteQR, mesaQR } = useParams();
+
 
  useEffect(() => {
-    obtenerUnRestaurante("5fd817645515ba5728db0adc");
-    obtenerMesas("5fd817645515ba5728db0adc");
+    obtenerUnRestaurante(restauranteQR);
+    obtenerMesas(restauranteQR);
     obtenerSesionGeneral(localStorage.getItem('mesalocal'))
-
+    console.log("useParams "+restauranteQR)
+    console.log("useParamsMesa "+mesaQR)
     
 }, []); //para que corra solo una vez
 
@@ -82,18 +92,23 @@ const handleChange = e => {
     let obj = JSON.parse(e.target.value);
     guardarMesaActual(obj._id)
     sesionGeneralAux.mesa = obj._id
-    guardarRestauranteActual("5fd817645515ba5728db0adc")
+    guardarRestauranteActual(restauranteQR)
     console.log(mesa)
     localStorage.setItem('mesalocal', sesionGeneralAux.mesa);
+    
     obtenerSesionGeneral(localStorage.getItem('mesalocal'))
   };
 
   const revisarFormulario = e =>{
       console.log("presione el boton")
     if(formulario.mesaNombre === ''){
-      guardarError(true);
+      guardarError("Falta seleccionar una mesa");
       return
       
+    }
+    if(localStorage.getItem('mesalocal') != mesaQR){
+        guardarError("La mesa no corresponde con el QR")
+        return
     }
     if(!localStorage.getItem('sesiongenerallocal')){ //si no hay sesiongenerallocal
        
@@ -173,11 +188,12 @@ const handleChange = e => {
                 
 
             </Row>
-            {error?
+            {error != ""?
                 <div className="text-center mt-4">
-                    <p id="alerta ">Falto seleccionar una mesa</p>
+                    <p id="alerta ">{error}</p>
                 </div>
                 : null}
+                
             <br></br>
             <br></br>
             <br></br>
