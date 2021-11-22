@@ -12,6 +12,7 @@ import DetallePlatillo from "./components/DetallePlatillo";
 import Orden from "./components/Orden";
 import Estatus from "./components/Estatus";
 import NoMatch  from "./components/NoMatch";
+import NoMatchHome from "./components/NoMatchHome";
 
 import RestauranteState from "./context/restaurantes/restauranteState";
 import MesaState from "./context/mesas/mesasState";
@@ -54,6 +55,8 @@ function App() {
                           />
                           <Route exact path="/Orden" component={Orden} />
                           <Route exact path="/Estatus" component={Estatus} />
+                          <Route path="/"><NoMatchHome></NoMatchHome></Route>
+                          
                           <Route path="*"><NoMatch></NoMatch></Route>
                         </Switch>
                       </Router>
