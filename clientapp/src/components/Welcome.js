@@ -152,10 +152,10 @@ function Welcome() {
       <Form>
         <Row className="align-middle">
           {mesasrestaurante
-            .filter((mesa) => (mesa._id = mesaQR))
-            .map(
-              (mesa, index) => index < 1 && <h2>Estas en la {mesa.numero}</h2>
-            )}
+            .filter((mesa) => mesa._id == mesaQR)
+            .map((mesa) => (
+              <h2>Estas en la {mesa.numero}</h2>
+            ))}
         </Row>
         <Row>
           <Col className="mesa">

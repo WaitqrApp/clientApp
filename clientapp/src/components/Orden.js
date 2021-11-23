@@ -90,8 +90,13 @@ function Orden() {
               .filter((platillo) => platillo.ordenado == false)
               .map((platillo) => (
                 <Card className="platillo-orden mb-2">
-                  <Card.Text className="mr-4 ml-1 mt-3 mb-n4">
+                  <Card.Text className="mr-4 ml-1 mt-3">
                     {platillo.nombre}
+                    <br></br>
+                    <span className="">
+                      <b>${platillo.precio}</b>
+                    </span>
+                    {/* ME MAMA ESTE PEDO SCRAPPY */}
                   </Card.Text>
                   {platillo.ordenado == false ? (
                     <IndeterminateCheckBoxIcon
@@ -112,11 +117,6 @@ function Orden() {
                   ) : (
                     <span></span>
                   )}
-                  <Card.Body className="">
-                    <Card.Text className="font-weight-bold mt-3">
-                      ${platillo.precio}
-                    </Card.Text>
-                  </Card.Body>
                 </Card>
               ))}
           </Col>
@@ -132,8 +132,13 @@ function Orden() {
               .filter((platillo) => platillo.ordenado == true)
               .map((platillo) => (
                 <Card className="platillo-orden mb-2">
-                  <Card.Text className="mr-4 ml-1 mt-3 mb-n2">
+                  <Card.Text className="mr-4 ml-1 mt-3">
                     {platillo.nombre}
+                    <br></br>
+                    <span className="pb-4">
+                      <b>${platillo.precio}</b>
+                    </span>
+                    {/* ME MAMA ESTE PEDO SCRAPPY */}
                   </Card.Text>
                   {platillo.ordenado == false ? (
                     <IndeterminateCheckBoxIcon
@@ -154,12 +159,6 @@ function Orden() {
                   ) : (
                     <span></span>
                   )}
-
-                  <Card.Body className="precio">
-                    <Card.Text className="font-weight-bold mt-3">
-                      ${platillo.precio}
-                    </Card.Text>
-                  </Card.Body>
                 </Card>
               ))}
           </Col>
