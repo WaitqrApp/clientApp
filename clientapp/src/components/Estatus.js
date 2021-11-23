@@ -1,4 +1,4 @@
-import React, { useState,useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { Card, Col, Row, Button, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
@@ -6,20 +6,21 @@ import "./styles.css";
 import Logo from "./logo_waitqr.png";
 import { Link } from "react-router-dom";
 
-import platilloOrdenadoContext from '../context/platillosOrdenados/platilloOrdenadoContext';
-
+import platilloOrdenadoContext from "../context/platillosOrdenados/platilloOrdenadoContext";
 
 function Estatus() {
   let history = useHistory();
 
-  const  platillosOrdenadossContext = useContext(platilloOrdenadoContext);
-    const { platilloOrdenadoOrden, obtenerPlatilloOrdenado, actualizarPlatilloOrdenado} = platillosOrdenadossContext;
+  const platillosOrdenadossContext = useContext(platilloOrdenadoContext);
+  const {
+    platilloOrdenadoOrden,
+    obtenerPlatilloOrdenado,
+    actualizarPlatilloOrdenado,
+  } = platillosOrdenadossContext;
 
   useEffect(() => {
-    obtenerPlatilloOrdenado(localStorage.getItem('ordenid'))
-       
-    
-  },[]);
+    obtenerPlatilloOrdenado(localStorage.getItem("ordenid"));
+  }, []);
 
   return (
     <Container className="estatus" fluid>
@@ -30,24 +31,21 @@ function Estatus() {
       </Row>
       <Row>
         <Col>
-          <h2>Órden #1</h2>
+          <h2>Resumen de órden</h2>
         </Col>
       </Row>
       <Row className="resumen-orden-row">
-      <Card className="resumen-orden-card ml-auto mr-auto ">
-      {
-                platilloOrdenadoOrden.map(platillo => (
-                   <span>
-                    <Card.Text className="nombre-platillo mt-1 ml-2 mb-n1">{platillo.cantidad} X {platillo.nombre}</Card.Text>
-                    <Card.Text className="comentatrios-platillo ml-4">{platillo.comentario}</Card.Text>
-                    </span>
-               
-                                ))}   
-        
-         
-          
-          
-          
+        <Card className="resumen-orden-card ml-auto mr-auto ">
+          {platilloOrdenadoOrden.map((platillo) => (
+            <span>
+              <Card.Text className="nombre-platillo mt-1 ml-2 mb-n1">
+                {platillo.cantidad} X {platillo.nombre}
+              </Card.Text>
+              <Card.Text className="comentatrios-platillo ml-4">
+                {platillo.comentario}
+              </Card.Text>
+            </span>
+          ))}
         </Card>
       </Row>
       <Row>

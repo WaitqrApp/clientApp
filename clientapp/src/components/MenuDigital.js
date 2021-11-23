@@ -21,6 +21,7 @@ import mesasContext from "../context/mesas/mesasContext";
 import menusContext from "../context/menus/menusContext";
 import sesionGeneralContext from "../context/sesionesGenerales/sesionGeneralContext";
 import sesionIndividualContext from "../context/sesionesIndividuales/sesionIndividualContext";
+import platillosContext from "../context/platillos/platillosContext";
 
 import Menu from "./Menu";
 
@@ -53,6 +54,14 @@ function MenuDigital() {
   const { sesiongeneralmesa, obtenerSesionGeneral, agregarSesionGeneral } =
     sesionGeneralsContext;
 
+  const platillossContext = useContext(platillosContext);
+  const {
+    platillosseccion,
+    platillo,
+    obtenerPlatillos,
+    guardarPlatilloActual,
+  } = platillossContext;
+
   const sesionIndividualsContext = useContext(sesionIndividualContext);
   const {
     sesionindividualsesiongeneral,
@@ -71,8 +80,7 @@ function MenuDigital() {
   useEffect(() => {
     obtenerMenus(restaurante);
     obtenerSesionGeneral(mesa[0]._id);
-    localStorage.setItem('mesaNombre', mesa[0].numero);
-
+    localStorage.setItem("mesaNombre", mesa[0].numero);
 
     if (sesiongeneralmesa.length > 0) {
       if (!localStorage.getItem("sesionindividualid")) {
@@ -92,7 +100,7 @@ function MenuDigital() {
   }, []);
   localStorage.setItem("restaurantelocal", restaurante);
   console.log(sesiongeneralmesa);
-/*
+  /*
   //Funcion para agregar el menu actual
   const seleccionarMenu = (menu) => {
     guardarMenuActual(menu._id); //fijar un menu actual
@@ -124,6 +132,7 @@ function MenuDigital() {
       <Card className="mb-4" style={{ flex: 1 }}>
         <Link to={"/DetallePlatillo"}>
           <Card.Img variant="top" src={Picaña} />
+
           <Card.Body>
             <Card.Title>
               <Row>
@@ -147,13 +156,15 @@ function MenuDigital() {
         </Link>
       </Card>
 
-    
       {menusrestaurante
-                .filter((menu) => menu.disponible == true)
-                .map((menudisponible) => (
-                  menudisponible ? <Menu menudisponible={menudisponible} /> : <p>No hay menu dispnible</p>
-                ))}
-    
+        .filter((menu) => menu.disponible == true)
+        .map((menudisponible) =>
+          menudisponible ? (
+            <Menu menudisponible={menudisponible} />
+          ) : (
+            <p>No hay menu dispnible</p>
+          )
+        )}
     </div>
   );
 }
