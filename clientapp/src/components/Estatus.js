@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Card, Col, Row, Button, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./styles.css";
-import Logo from "./logo_waitqr.png";
+import Logo from "./logo_waitqr_update.png";
 import { Link } from "react-router-dom";
 
 import platilloOrdenadoContext from "../context/platillosOrdenados/platilloOrdenadoContext";

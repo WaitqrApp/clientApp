@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Form, Button, Card, Container } from "react-bootstrap";
 import "./styles.css";
-import Logo from "./logo_waitqr.png";
+import Logo from "./logo_waitqr_update.png";
 
 import {
   BrowserRouter as Router,
