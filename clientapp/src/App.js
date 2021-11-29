@@ -13,6 +13,8 @@ import Orden from "./components/Orden";
 import Estatus from "./components/Estatus";
 import NoMatch  from "./components/NoMatch";
 import NoMatchHome from "./components/NoMatchHome";
+import Gracias from "./components/Gracias";
+
 
 import RestauranteState from "./context/restaurantes/restauranteState";
 import MesaState from "./context/mesas/mesasState";
@@ -54,6 +56,7 @@ function App() {
                             component={DetallePlatillo}
                           />
                           <Route exact path="/Orden" component={Orden} />
+                          <Route exact path="/Gracias" component={Gracias} />
                           <Route exact path="/Estatus" component={Estatus} />
                           <Route path="/"><NoMatchHome></NoMatchHome></Route>
                           

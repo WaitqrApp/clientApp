@@ -71,6 +71,14 @@
   bottom: 0;
   margin-bottom: 5%;
 }
+.boton-ordenar {
+  position: absolute;
+  width: 99vh;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0;
+  margin-bottom: 5%;
+}
 
 .mesa {
   margin-left: auto;

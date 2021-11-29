@@ -15,6 +15,7 @@ import {
 } from "react-bootstrap";
 import SearchIcon from "@material-ui/icons/Search";
 import Picaña from "./Menu/picana-t.jpg";
+import Carrousel from "./Carrousel";
 
 import restauranteContext from "../context/restaurantes/restauranteContext";
 import mesasContext from "../context/mesas/mesasContext";
@@ -31,6 +32,9 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 import "./Menu/menucliente.css";
 import { Divider } from "@material-ui/core";
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 function MenuDigital() {
   //Extraer restaurantes de state inicial
@@ -57,9 +61,11 @@ function MenuDigital() {
   const platillossContext = useContext(platillosContext);
   const {
     platillosseccion,
+    platillosrestaurante,
     platillo,
     obtenerPlatillos,
     guardarPlatilloActual,
+    obtenerPlatillosRestaurante
   } = platillossContext;
 
   const sesionIndividualsContext = useContext(sesionIndividualContext);
@@ -79,6 +85,7 @@ function MenuDigital() {
 
   useEffect(() => {
     obtenerMenus(restaurante);
+    obtenerPlatillosRestaurante(restaurante)
     obtenerSesionGeneral(mesa[0]._id);
     localStorage.setItem("mesaNombre", mesa[0].numero);
 
@@ -100,16 +107,8 @@ function MenuDigital() {
   }, []);
   localStorage.setItem("restaurantelocal", restaurante);
   console.log(sesiongeneralmesa);
-  /*
-  //Funcion para agregar el menu actual
-  const seleccionarMenu = (menu) => {
-    guardarMenuActual(menu._id); //fijar un menu actual
-    guardarMenuEscogido(menu.nombre);
-    console.log(sesiongeneralmesa);
+ 
 
-   
-  };
-*/
   return (
     <div className="menu-principal">
       <h1>{restaurantes.nombre}</h1>
@@ -117,8 +116,8 @@ function MenuDigital() {
       <Link to={"/Orden"}>
         <ShoppingCartIcon className="carrito-menu" />
       </Link>
-
-      <InputGroup className="searchbar">
+{/*
+  <InputGroup className="searchbar">
         <InputGroup.Prepend>
           <InputGroup.Text id="basic-addon1">
             <SearchIcon />
@@ -126,10 +125,12 @@ function MenuDigital() {
         </InputGroup.Prepend>
         <Form.Control type="text" placeholder="Busca un platillo" />
       </InputGroup>
+*/}
+      
 
       <h2>Lo más recomendado</h2>
-
-      <Card className="mb-4" style={{ flex: 1 }}>
+{/*
+<Card className="mb-4" style={{ flex: 1 }}>
         <Link to={"/DetallePlatillo"}>
           <Card.Img variant="top" src={Picaña} />
 
@@ -155,6 +156,25 @@ function MenuDigital() {
           </Card.Body>
         </Link>
       </Card>
+*/}
+<Carousel>
+  {
+    platillosrestaurante
+    .filter((platillo)=> platillo.favorito ==true)
+    .map((platillofavorito, i)=>
+    platillofavorito?(
+      <Carrousel
+       platillofavorito={platillofavorito}
+       />
+    ):(
+      <p>No hay platillos favoritos</p>
+    )
+    )
+  }
+</Carousel>
+ 
+
+      
 
       {menusrestaurante
         .filter((menu) => menu.disponible == true)
