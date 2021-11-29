@@ -3,13 +3,19 @@ import React, { useState, useContext, useEffect } from "react";
 import { Card, Col, Row, Button, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./styles.css";
-import Logo from "./logo_waitqr_update.png";
+import Logo from "./logo_waitqr.png";
 import { Link } from "react-router-dom";
 
 import platilloOrdenadoContext from "../context/platillosOrdenados/platilloOrdenadoContext";
+import ordenContext from "../context/ordenes/ordenContext";
+
 
 function Estatus() {
   let history = useHistory();
+
+  const ordensContext = useContext(ordenContext);
+  const { ordensesionindividual, obtenerOrdenSesionIndividual, actualizarOrden, agregarOrden } =
+    ordensContext;
 
   const platillosOrdenadossContext = useContext(platilloOrdenadoContext);
   const {
@@ -21,6 +27,19 @@ function Estatus() {
   useEffect(() => {
     obtenerPlatilloOrdenado(localStorage.getItem("ordenid"));
   }, []);
+
+  const [ordenAux, guardarOrdenAux] = useState({
+    id: "",
+    pagar: "",
+  });
+
+const pagarOrden = e =>{
+  ordenAux._id = localStorage.getItem('ordenid')
+  ordenAux.pagar = true;
+  actualizarOrden(ordenAux);
+  localStorage.clear();
+  history.push("/Gracias")
+}
 
   return (
     <Container className="estatus" fluid>
@@ -57,9 +76,15 @@ function Estatus() {
         </Col>
       </Row>
       <Row>
+        <Col className="">
+            <Button className=" mt-3" onClick={() => pagarOrden()}>Pagar</Button>
+          
+        </Col>
+      </Row>
+      <Row>
         <Col className="boton-ordenar">
           <Link to={"/MenuDigital"}>
-            <Button className="confirmar mt-3">Ordenar Algo Más</Button>
+            <Button className="confirmar ">Ordenar Algo Más</Button>
           </Link>
         </Col>
       </Row>
