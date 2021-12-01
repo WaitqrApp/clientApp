@@ -64,19 +64,20 @@
 }
 
 .boton-ordenar {
-  position: absolute;
-  width: 99vh;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: #efb63d;
+  border-color: #efb63d !important;
+  width: 40vw;
+  position: fixed;
   bottom: 0;
   margin-bottom: 5%;
 }
-.boton-ordenar {
-  position: absolute;
-  width: 99vh;
-  margin-left: auto;
-  margin-right: auto;
+
+.boton-pagar {
+  background-color: #efb63d;
+  border-color: #efb63d !important;
+  width: 40vw;
   bottom: 0;
+  position: fixed;
   margin-bottom: 5%;
 }
 
@@ -334,6 +335,10 @@
   margin-bottom: 43%;
 }
 
+.estatus {
+  height: 100vh;
+}
+
 .estatus h1 {
   font-size: 150%;
   font-weight: bold;
@@ -376,4 +381,33 @@
 
 .comentatrios-platillo {
   font-size: small;
+}
+
+.logo-card-gracias {
+  border: 0px;
+}
+
+.imagen-recomendado {
+  height: 30vh;
+  width: auto;
+}
+
+.recomendado h1 {
+  font-size: 100%;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(7, 46, 72);
+  margin-top: 10%;
+  text-align: center;
+}
+
+.recomendado h2 {
+  font-size: 100%;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(7, 46, 72);
+  margin-top: 10%;
+  text-align: center;
 }

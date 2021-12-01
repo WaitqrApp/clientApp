@@ -34,7 +34,7 @@ import "./Menu/menucliente.css";
 import { Divider } from "@material-ui/core";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel";
 
 function MenuDigital() {
   //Extraer restaurantes de state inicial
@@ -65,7 +65,7 @@ function MenuDigital() {
     platillo,
     obtenerPlatillos,
     guardarPlatilloActual,
-    obtenerPlatillosRestaurante
+    obtenerPlatillosRestaurante,
   } = platillossContext;
 
   const sesionIndividualsContext = useContext(sesionIndividualContext);
@@ -85,7 +85,7 @@ function MenuDigital() {
 
   useEffect(() => {
     obtenerMenus(restaurante);
-    obtenerPlatillosRestaurante(restaurante)
+    obtenerPlatillosRestaurante(restaurante);
     obtenerSesionGeneral(mesa[0]._id);
     localStorage.setItem("mesaNombre", mesa[0].numero);
 
@@ -107,7 +107,6 @@ function MenuDigital() {
   }, []);
   localStorage.setItem("restaurantelocal", restaurante);
   console.log(sesiongeneralmesa);
- 
 
   return (
     <div className="menu-principal">
@@ -116,7 +115,7 @@ function MenuDigital() {
       <Link to={"/Orden"}>
         <ShoppingCartIcon className="carrito-menu" />
       </Link>
-{/*
+      {/*
   <InputGroup className="searchbar">
         <InputGroup.Prepend>
           <InputGroup.Text id="basic-addon1">
@@ -126,10 +125,8 @@ function MenuDigital() {
         <Form.Control type="text" placeholder="Busca un platillo" />
       </InputGroup>
 */}
-      
-
       <h2>Lo más recomendado</h2>
-{/*
+      {/*
 <Card className="mb-4" style={{ flex: 1 }}>
         <Link to={"/DetallePlatillo"}>
           <Card.Img variant="top" src={Picaña} />
@@ -157,25 +154,22 @@ function MenuDigital() {
         </Link>
       </Card>
 */}
-<Carousel>
-  {
-    platillosrestaurante
-    .filter((platillo)=> platillo.favorito ==true)
-    .map((platillofavorito, i)=>
-    platillofavorito?(
-      <Carrousel
-       platillofavorito={platillofavorito}
-       />
-    ):(
-      <p>No hay platillos favoritos</p>
-    )
-    )
-  }
-</Carousel>
- 
-
-      
-
+      <Carousel
+        showIndicators={false}
+        infiniteLoop={true}
+        swipeable={true}
+        showStatus={false}
+      >
+        {platillosrestaurante
+          .filter((platillo) => platillo.favorito == true)
+          .map((platillofavorito) =>
+            platillofavorito ? (
+              <Carrousel platillofavorito={platillofavorito} />
+            ) : (
+              <p>No hay platillos favoritos</p>
+            )
+          )}
+      </Carousel>
       {menusrestaurante
         .filter((menu) => menu.disponible == true)
         .map((menudisponible) =>

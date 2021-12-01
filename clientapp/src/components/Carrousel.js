@@ -1,14 +1,17 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
+import "./styles.css";
 
-function Carrousel({platillofavorito}){
-    return(
-        
-        <div>
-        <img src={platillofavorito.imagenPlatillo} />
-        <p className="legend">{platillofavorito.nombre}<br></br>{platillofavorito.descripcion}</p>
-        
+function Carrousel({ platillofavorito }) {
+  return (
+    <div className="recomendado">
+      <img
+        className="imagen-recomendado "
+        src={platillofavorito.imagenPlatillo}
+      />
+      <h1 className="">{platillofavorito.nombre}</h1>
+      <h2 className="">{platillofavorito.descripcion}</h2>
     </div>
-    );
+  );
 }
 
 export default Carrousel;

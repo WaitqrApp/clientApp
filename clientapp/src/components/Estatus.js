@@ -3,19 +3,22 @@ import React, { useState, useContext, useEffect } from "react";
 import { Card, Col, Row, Button, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./styles.css";
-import Logo from "./logo_waitqr.png";
+import Logo from "./logo_waitqr_update.png";
 import { Link } from "react-router-dom";
 
 import platilloOrdenadoContext from "../context/platillosOrdenados/platilloOrdenadoContext";
 import ordenContext from "../context/ordenes/ordenContext";
 
-
 function Estatus() {
   let history = useHistory();
 
   const ordensContext = useContext(ordenContext);
-  const { ordensesionindividual, obtenerOrdenSesionIndividual, actualizarOrden, agregarOrden } =
-    ordensContext;
+  const {
+    ordensesionindividual,
+    obtenerOrdenSesionIndividual,
+    actualizarOrden,
+    agregarOrden,
+  } = ordensContext;
 
   const platillosOrdenadossContext = useContext(platilloOrdenadoContext);
   const {
@@ -33,13 +36,13 @@ function Estatus() {
     pagar: "",
   });
 
-const pagarOrden = e =>{
-  ordenAux._id = localStorage.getItem('ordenid')
-  ordenAux.pagar = true;
-  actualizarOrden(ordenAux);
-  localStorage.clear();
-  history.push("/Gracias")
-}
+  const pagarOrden = (e) => {
+    ordenAux._id = localStorage.getItem("ordenid");
+    ordenAux.pagar = true;
+    actualizarOrden(ordenAux);
+    localStorage.clear();
+    history.push("/Gracias");
+  };
 
   return (
     <Container className="estatus" fluid>
@@ -76,16 +79,15 @@ const pagarOrden = e =>{
         </Col>
       </Row>
       <Row>
-        <Col className="">
-            <Button className=" mt-3" onClick={() => pagarOrden()}>Pagar</Button>
-          
-        </Col>
-      </Row>
-      <Row>
-        <Col className="boton-ordenar">
+        <Col m={6}>
           <Link to={"/MenuDigital"}>
-            <Button className="confirmar ">Ordenar Algo Más</Button>
+            <Button className="boton-ordenar">Ordenar mas</Button>
           </Link>
+        </Col>
+        <Col m={6}>
+          <Button className="boton-pagar" onClick={() => pagarOrden()}>
+            Pagar y finalizar
+          </Button>
         </Col>
       </Row>
     </Container>
