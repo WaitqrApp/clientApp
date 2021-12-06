@@ -9,7 +9,7 @@ function Carrousel({ platillofavorito }) {
         src={platillofavorito.imagenPlatillo}
       />
       <h1 className="">{platillofavorito.nombre}</h1>
-      <h2 className="">{platillofavorito.descripcion}</h2>
+      <h4 className="">{platillofavorito.descripcion}</h4>
     </div>
   );
 }

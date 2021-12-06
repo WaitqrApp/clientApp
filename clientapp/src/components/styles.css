@@ -411,3 +411,8 @@
   margin-top: 10%;
   text-align: center;
 }
+
+.carousel .thumbs-wrapper {
+  margin: 0px !important;
+  overflow: auto !important;
+}
