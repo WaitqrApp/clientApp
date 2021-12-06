@@ -106,7 +106,7 @@ function MenuDigital() {
     }
   }, []);
   localStorage.setItem("restaurantelocal", restaurante);
-  console.log(sesiongeneralmesa);
+  console.log(platillosrestaurante, "ESTOS SON LOS PLATILLOS PARA EL CARRUSEL");
 
   return (
     <div className="menu-principal">
@@ -126,34 +126,6 @@ function MenuDigital() {
       </InputGroup>
 */}
       <h2>Lo más recomendado</h2>
-      {/*
-<Card className="mb-4" style={{ flex: 1 }}>
-        <Link to={"/DetallePlatillo"}>
-          <Card.Img variant="top" src={Picaña} />
-
-          <Card.Body>
-            <Card.Title>
-              <Row>
-                <Col className="ml-n2">
-                  <h2>Picaña Haye</h2>
-                </Col>
-                <Col>
-                  <Badge className="badge ml-4" variant="primary">
-                    El más pedido
-                  </Badge>
-                </Col>
-              </Row>
-            </Card.Title>
-            <Card.Text>
-              <p1>Deliciosa Picaña Haye</p1>
-            </Card.Text>
-            <Card.Text>
-              <p1>$365.00</p1>
-            </Card.Text>
-          </Card.Body>
-        </Link>
-      </Card>
-*/}
       <Carousel
         showIndicators={false}
         infiniteLoop={true}
@@ -164,7 +136,8 @@ function MenuDigital() {
           .filter((platillo) => platillo.favorito == true)
           .map((platillofavorito) =>
             platillofavorito ? (
-              <Carrousel platillofavorito={platillofavorito} />
+              (console.log("llame al carrousel", platillofavorito),
+              (<Carrousel platillofavorito={platillofavorito} />))
             ) : (
               <p>No hay platillos favoritos</p>
             )
@@ -176,7 +149,7 @@ function MenuDigital() {
           menudisponible ? (
             <Menu menudisponible={menudisponible} />
           ) : (
-            <p>No hay menu dispnible</p>
+            <p>No hay menu disponible</p>
           )
         )}
     </div>

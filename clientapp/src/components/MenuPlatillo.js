@@ -15,7 +15,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import platillosContext from "../context/platillos/platillosContext";
 
 function MenuPlatillo({ seccionSeleccionada }) {
-  console.log("llego esta seccion " + seccionSeleccionada.nombre);
+  /* console.log("llego esta seccion " + seccionSeleccionada.nombre); */
   const platillossContext = useContext(platillosContext);
   const {
     platillosseccion,
