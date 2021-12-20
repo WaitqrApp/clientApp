@@ -137,6 +137,45 @@ function Welcome() {
     }
   };
 
+  const continuar =e =>{
+    guardarMesaActual(mesaQR);
+    sesionGeneralAux.mesa = mesaQR;
+    guardarRestauranteActual(restauranteQR);
+    /* console.log(mesa) */
+    localStorage.setItem("mesalocal", sesionGeneralAux.mesa);
+
+    obtenerSesionGeneral(localStorage.getItem("mesalocal"));
+    if (!localStorage.getItem("sesiongenerallocal")) {
+      //si no hay sesiongenerallocal
+
+      /* console.log("este es el length"+sesiongeneralmesa.length)
+        console.log("esto es lo que trae"+JSON.stringify(sesiongeneralmesa)) */
+      if (sesiongeneralmesa.length > 0) {
+        /* console.log("entre en if") */
+        localStorage.setItem("sesiongeneralid", sesiongeneralmesa[0]._id);
+        //sesiongeneralmesa.length = 0;
+        obtenerSesionGeneral(sesionGeneralAux.mesa);
+        /* console.log("ya la mande a cero "+ sesiongeneralmesa.length ) */
+        history.push("/MenuDigital");
+      } else {
+        /* console.log("entre en else") */
+        sesionGeneralAux.horarioInicio = new Date().toLocaleString("en-GB", {
+          timeZone: "America/Mexico_City",
+        });
+        sesionGeneralAux.restaurante = restaurantes._id;
+        agregarSesionGeneral(sesionGeneralAux);
+        //localStorage.setItem('mesalocal', sesionGeneralAux.mesa);
+        //sesiongeneralmesa.length = 0;
+        obtenerSesionGeneral(sesionGeneralAux.mesa);
+        /* console.log("ya la mande a cero "+ sesiongeneralmesa.length ) */
+
+        history.push("/MenuDigital");
+      }
+    } else {
+      history.push("/MenuDigital");
+    }
+  }
+
   return (
     <Container fluid className="bienvenido">
       <Row>
@@ -157,29 +196,7 @@ function Welcome() {
               <h2>Estas en la {mesa.numero}</h2>
             ))}
         </Row>
-        <Row>
-          <Col className="mesa">
-            <Form.Control
-              onChange={handleChange}
-              name="mesaNombre"
-              className="mesa"
-              title="mesa 1"
-              as="select"
-            >
-              <option>Selecciona una mesa</option>
-              {mesasrestaurante.map((mesa) => (
-                <option key={mesa._id} value={JSON.stringify(mesa)}>
-                  {mesa.numero}
-                </option>
-              ))}
-            </Form.Control>
-          </Col>
-        </Row>
-        {error != "" ? (
-          <div className="text-center mt-4">
-            <p id="alerta ">{error}</p>
-          </div>
-        ) : null}
+        
 
         <br></br>
         <br></br>
@@ -190,7 +207,7 @@ function Welcome() {
           <Col className="boton-ordenar">
             <Button
               className="confirmar mt-3"
-              onClick={() => revisarFormulario()}
+              onClick={() => continuar()}
             >
               Confirmar
             </Button>
