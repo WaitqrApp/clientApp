@@ -19,6 +19,8 @@ import sesionIndividualContext from "../context/sesionesIndividuales/sesionIndiv
 import { useHistory } from "react-router-dom";
 
 function Welcome() {
+  localStorage.clear();
+
   let history = useHistory();
   //Extraer restaurantes de state inicial
   const restaurantesContext = useContext(restauranteContext);
@@ -137,7 +139,7 @@ function Welcome() {
     }
   };
 
-  const continuar =e =>{
+  const continuar = (e) => {
     guardarMesaActual(mesaQR);
     sesionGeneralAux.mesa = mesaQR;
     guardarRestauranteActual(restauranteQR);
@@ -174,7 +176,7 @@ function Welcome() {
     } else {
       history.push("/MenuDigital");
     }
-  }
+  };
 
   return (
     <Container fluid className="bienvenido">
@@ -196,7 +198,6 @@ function Welcome() {
               <h2>Estas en la {mesa.numero}</h2>
             ))}
         </Row>
-        
 
         <br></br>
         <br></br>
@@ -205,10 +206,7 @@ function Welcome() {
         <br></br>
         <Row>
           <Col className="boton-ordenar">
-            <Button
-              className="confirmar mt-3"
-              onClick={() => continuar()}
-            >
+            <Button className="confirmar mt-3" onClick={() => continuar()}>
               Confirmar
             </Button>
           </Col>

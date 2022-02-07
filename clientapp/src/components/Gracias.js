@@ -19,7 +19,10 @@ function Gracias() {
         </Card>
       </Row>
       <Row className="justify-content-md-center">
-        <h1>Gracias, en breve un mesero se acercara a cobrarte.</h1>
+        <h3>El total a pagar es: ${localStorage.getItem("total")}</h3>
+      </Row>
+      <Row className="justify-content-md-center">
+        <h3>Gracias, en breve un mesero se acercara a cobrarte.</h3>
       </Row>
       <Row className="justify-content-md-center mt-4">
         <h3>Si quieres algo más, escanea el QR de tu mesa.</h3>

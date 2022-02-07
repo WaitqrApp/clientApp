@@ -56,6 +56,8 @@ function Orden() {
     (platillo) => (total = platillo.precio * platillo.cantidad + total)
   );
 
+  localStorage.setItem("total", total);
+
   const confirmarOrden = (e) => {
     platilloOrdenadoOrden.map(
       (platillo) => (

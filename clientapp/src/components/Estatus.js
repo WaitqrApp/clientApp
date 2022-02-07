@@ -40,7 +40,9 @@ function Estatus() {
     ordenAux._id = localStorage.getItem("ordenid");
     ordenAux.pagar = true;
     actualizarOrden(ordenAux);
+    var total = localStorage.getItem("total");
     localStorage.clear();
+    localStorage.setItem("total", total);
     history.push("/Gracias");
   };
 
